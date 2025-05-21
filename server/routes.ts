@@ -14,10 +14,31 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Validate request body
       const contactData = insertContactSchema.parse(req.body);
       
-      // Store contact submission
+      // Store contact submission in database
       const submission = await storage.createContactSubmission(contactData);
       
-      res.status(201).json({ success: true, message: "Contact form submitted successfully" });
+      // Format message for Telegram
+      const telegramMessage = formatContactMessage({
+        name: contactData.name,
+        email: contactData.email,
+        subject: contactData.subject,
+        message: contactData.message
+      });
+      
+      // Send message to Telegram
+      const telegramSent = await sendTelegramMessage(telegramMessage);
+      
+      if (telegramSent) {
+        console.log('Message sent to Telegram successfully');
+      } else {
+        console.warn('Failed to send message to Telegram');
+      }
+      
+      // Return success response to client (even if Telegram fails, we still saved to DB)
+      res.status(201).json({ 
+        success: true, 
+        message: "Contact form submitted successfully" 
+      });
     } catch (error) {
       if (error instanceof z.ZodError) {
         res.status(400).json({ 

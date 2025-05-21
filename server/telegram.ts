@@ -44,14 +44,15 @@ export async function sendTelegramMessage(message: string): Promise<boolean> {
  * @param contactData Les données du formulaire de contact
  * @returns Le message formaté
  */
-export function formatContactMessage(contactData: { name: string; email: string; message: string }): string {
-  const { name, email, message } = contactData;
+export function formatContactMessage(contactData: { name: string; email: string; subject?: string; message: string }): string {
+  const { name, email, subject, message } = contactData;
   
   return `
 <b>🔔 Nouveau message de contact</b>
 
 <b>Nom:</b> ${name}
 <b>Email:</b> ${email}
+${subject ? `<b>Sujet:</b> ${subject}\n` : ''}
 <b>Message:</b>
 ${message}
 
