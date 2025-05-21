@@ -85,8 +85,10 @@ const ContactSection = () => {
       } else {
         // Show error toast
         toast({
-          title: "Error",
-          description: "Failed to send message. Please try again later.",
+          title: language === 'fr' ? "Erreur" : "Error",
+          description: language === 'fr'
+            ? "Échec de l'envoi du message. Veuillez réessayer plus tard."
+            : "Failed to send message. Please try again later.",
           variant: "destructive",
         });
       }
@@ -100,26 +102,30 @@ const ContactSection = () => {
       <div className="container mx-auto px-6">
         <div className="mb-12 text-center">
           <h2 className="text-3xl font-mono text-[hsl(var(--matrix-green))] mb-2">
-            <span className="text-white">&gt;</span> Contact<span className="text-white">_</span>
+            <span className="text-white">&gt;</span> {t('contact')}<span className="text-white">_</span>
           </h2>
           <div className="w-20 h-1 bg-[hsl(var(--matrix-green))] mx-auto"></div>
           <p className="mt-4 text-gray-300 max-w-2xl mx-auto">
-            Interested in working together? Feel free to reach out through any of the channels below.
+            {language === 'fr' 
+              ? "Intéressé(e) par une collaboration ? N'hésitez pas à me contacter via l'un des canaux ci-dessous."
+              : "Interested in working together? Feel free to reach out through any of the channels below."}
           </p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto">
           <Card className="border border-[hsl(var(--matrix-green))]/30 bg-black/60 backdrop-blur-sm rounded-lg p-8 shadow-lg shadow-[hsl(var(--matrix-green))]/10">
-            <h3 className="text-xl font-mono text-[hsl(var(--matrix-green))] mb-6">Send Message</h3>
+            <h3 className="text-xl font-mono text-[hsl(var(--matrix-green))] mb-6">
+              {t('contact.submit')}
+            </h3>
             
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-white mb-2">Name</label>
+                <label htmlFor="name" className="block text-white mb-2">{t('contact.name')}</label>
                 <Input 
                   type="text" 
                   id="name" 
                   name="name" 
-                  placeholder="Your name" 
+                  placeholder={language === 'fr' ? "Votre nom" : "Your name"} 
                   className="w-full px-4 py-2 bg-black/80 border border-[hsl(var(--matrix-green))]/50 rounded-md text-white focus:outline-none focus:border-[hsl(var(--matrix-green))]"
                   value={formData.name}
                   onChange={handleChange}
@@ -128,12 +134,12 @@ const ContactSection = () => {
               </div>
               
               <div>
-                <label htmlFor="email" className="block text-white mb-2">Email</label>
+                <label htmlFor="email" className="block text-white mb-2">{t('contact.email')}</label>
                 <Input 
                   type="email" 
                   id="email" 
                   name="email" 
-                  placeholder="Your email" 
+                  placeholder={language === 'fr' ? "Votre email" : "Your email"} 
                   className="w-full px-4 py-2 bg-black/80 border border-[hsl(var(--matrix-green))]/50 rounded-md text-white focus:outline-none focus:border-[hsl(var(--matrix-green))]"
                   value={formData.email}
                   onChange={handleChange}
@@ -142,12 +148,14 @@ const ContactSection = () => {
               </div>
               
               <div>
-                <label htmlFor="subject" className="block text-white mb-2">Subject</label>
+                <label htmlFor="subject" className="block text-white mb-2">
+                  {language === 'fr' ? "Sujet" : "Subject"}
+                </label>
                 <Input 
                   type="text" 
                   id="subject" 
                   name="subject" 
-                  placeholder="Subject" 
+                  placeholder={language === 'fr' ? "Sujet" : "Subject"} 
                   className="w-full px-4 py-2 bg-black/80 border border-[hsl(var(--matrix-green))]/50 rounded-md text-white focus:outline-none focus:border-[hsl(var(--matrix-green))]"
                   value={formData.subject}
                   onChange={handleChange}
@@ -156,12 +164,12 @@ const ContactSection = () => {
               </div>
               
               <div>
-                <label htmlFor="message" className="block text-white mb-2">Message</label>
+                <label htmlFor="message" className="block text-white mb-2">{t('contact.message')}</label>
                 <Textarea 
                   id="message" 
                   name="message" 
                   rows={5} 
-                  placeholder="Your message" 
+                  placeholder={language === 'fr' ? "Votre message" : "Your message"} 
                   className="w-full px-4 py-2 bg-black/80 border border-[hsl(var(--matrix-green))]/50 rounded-md text-white focus:outline-none focus:border-[hsl(var(--matrix-green))]"
                   value={formData.message}
                   onChange={handleChange}
@@ -174,13 +182,17 @@ const ContactSection = () => {
                 disabled={isSubmitting}
                 className="bg-[hsl(var(--matrix-green))] text-black px-6 py-3 h-auto rounded-md font-mono hover:bg-[hsl(var(--matrix-teal))] transition-colors duration-300"
               >
-                {isSubmitting ? "Sending..." : "Send Message"}
+                {isSubmitting 
+                  ? (language === 'fr' ? "Envoi en cours..." : "Sending...") 
+                  : t('contact.submit')}
               </Button>
             </form>
           </Card>
           
           <Card className="border border-[hsl(var(--matrix-green))]/30 bg-black/60 backdrop-blur-sm rounded-lg p-8 shadow-lg shadow-[hsl(var(--matrix-green))]/10">
-            <h3 className="text-xl font-mono text-[hsl(var(--matrix-green))] mb-6">Contact Information</h3>
+            <h3 className="text-xl font-mono text-[hsl(var(--matrix-green))] mb-6">
+              {language === 'fr' ? "Informations de Contact" : "Contact Information"}
+            </h3>
             
             <div className="space-y-6">
               <div className="flex items-start">
@@ -188,8 +200,10 @@ const ContactSection = () => {
                   <MapPin className="text-[hsl(var(--matrix-green))]" />
                 </div>
                 <div>
-                  <h4 className="text-white font-medium mb-1">Location</h4>
-                  <p className="text-gray-300">Douala et Yaoundé, Cameroon</p>
+                  <h4 className="text-white font-medium mb-1">
+                    {language === 'fr' ? "Localisation" : "Location"}
+                  </h4>
+                  <p className="text-gray-300">Douala et Yaoundé, Cameroun</p>
                 </div>
               </div>
               
@@ -213,7 +227,9 @@ const ContactSection = () => {
                   <Phone className="text-[hsl(var(--matrix-green))]" />
                 </div>
                 <div>
-                  <h4 className="text-white font-medium mb-1">Phone</h4>
+                  <h4 className="text-white font-medium mb-1">
+                    {language === 'fr' ? "Téléphone" : "Phone"}
+                  </h4>
                   <a 
                     href="tel:+237690777859" 
                     className="text-gray-300 hover:text-[hsl(var(--matrix-green))] transition-colors"
@@ -241,7 +257,9 @@ const ContactSection = () => {
               </div>
               
               <div className="mt-8">
-                <h4 className="text-white font-medium mb-4">Follow Me</h4>
+                <h4 className="text-white font-medium mb-4">
+                  {language === 'fr' ? "Me Suivre" : "Follow Me"}
+                </h4>
                 <div className="flex space-x-4">
                   <a 
                     href="https://github.com/EagleFox31" 
