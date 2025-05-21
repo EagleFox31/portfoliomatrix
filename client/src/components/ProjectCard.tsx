@@ -67,19 +67,19 @@ const ProjectCard = ({
             </ul>
           </div>
           
-          <div className="mt-auto">
-            {link && (
+          {link && (
+            <div className="mt-auto">
               <a 
                 href={link} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-[hsl(var(--matrix-green))] hover:text-[hsl(var(--matrix-teal))] transition-colors inline-flex items-center"
               >
-                <span>View Project Details</span>
-                <ExternalLink className="ml-2 h-4 w-4" />
+                <ExternalLink className="mr-2 h-4 w-4" />
+                <span>{link.replace(/^https?:\/\/(www\.)?/i, '')}</span>
               </a>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
     </motion.div>
