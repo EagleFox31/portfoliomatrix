@@ -67,7 +67,7 @@ const HeroSection = () => {
           
           <div className="mt-12 flex justify-center space-x-6">
             <a 
-              href="https://github.com" 
+              href="https://github.com/EagleFox31" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-white hover:text-[hsl(var(--matrix-green))] transition-colors"

@@ -185,7 +185,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="text-white font-medium mb-1">Location</h4>
-                  <p className="text-gray-300">Yaoundé, Cameroon</p>
+                  <p className="text-gray-300">Douala et Yaoundé, Cameroon</p>
                 </div>
               </div>
               
@@ -240,7 +240,7 @@ const ContactSection = () => {
                 <h4 className="text-white font-medium mb-4">Follow Me</h4>
                 <div className="flex space-x-4">
                   <a 
-                    href="#" 
+                    href="https://github.com/EagleFox31" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="bg-[hsl(var(--matrix-dark-green))] p-3 rounded-md text-[hsl(var(--matrix-green))] hover:bg-[hsl(var(--matrix-green))] hover:text-black transition-colors"

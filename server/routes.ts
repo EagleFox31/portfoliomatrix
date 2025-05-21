@@ -37,7 +37,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // API endpoint for resume download
   app.get("/api/resume/download", (req, res) => {
     try {
-      const filePath = path.resolve(__dirname, "../attached_assets/Jennifer_Lawrynn_Aka_a_CV_INGENIEURE_LOGICIELLE_2025_MAI.pdf");
+      const filePath = path.resolve("./attached_assets/Jennifer_Lawrynn_Aka_a_CV_INGENIEURE_LOGICIELLE_2025_MAI.pdf");
       
       if (fs.existsSync(filePath)) {
         res.download(

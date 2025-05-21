@@ -114,7 +114,7 @@ const ProjectsSection = () => {
               </p>
             </div>
             <a 
-              href="https://github.com" 
+              href="https://github.com/EagleFox31" 
               target="_blank" 
               rel="noopener noreferrer"
               className="mt-6 inline-flex items-center text-[hsl(var(--matrix-green))] hover:text-[hsl(var(--matrix-teal))] transition-colors"
