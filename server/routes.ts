@@ -37,23 +37,31 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // API endpoint for resume download
   app.get("/api/resume/download", (req, res) => {
     try {
-      const filePath = path.resolve("./attached_assets/Jennifer_Lawrynn_Aka_a_CV_INGENIEURE_LOGICIELLE_2025_MAI.pdf");
+      // Chemin absolu vers le fichier PDF
+      const filePath = path.join(process.cwd(), 'attached_assets', 'Jennifer_Lawrynn_Aka_a_CV_INGENIEURE_LOGICIELLE_2025_MAI.pdf');
+      
+      console.log('Attempting to send file:', filePath);
+      console.log('File exists:', fs.existsSync(filePath));
       
       if (fs.existsSync(filePath)) {
-        res.download(
-          filePath,
-          "Jennifer_Lawrynn_Aka_a_CV.pdf",
-          (err) => {
-            if (err) {
-              console.error("Error downloading CV:", err);
-              res.status(500).json({ 
-                success: false, 
-                message: "Error downloading CV file" 
-              });
-            }
-          }
-        );
+        res.setHeader('Content-Type', 'application/pdf');
+        res.setHeader('Content-Disposition', 'attachment; filename=Jennifer_Lawrynn_Aka_a_CV.pdf');
+        
+        // Flux de lecture du fichier
+        const fileStream = fs.createReadStream(filePath);
+        
+        fileStream.on('error', (error) => {
+          console.error('Stream error:', error);
+          res.status(500).json({ 
+            success: false, 
+            message: "Error streaming CV file" 
+          });
+        });
+        
+        // Pipe le fichier directement dans la réponse
+        fileStream.pipe(res);
       } else {
+        console.error('File not found at path:', filePath);
         res.status(404).json({ 
           success: false, 
           message: "Resume file not found" 

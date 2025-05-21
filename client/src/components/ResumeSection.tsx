@@ -11,20 +11,15 @@ const ResumeSection = () => {
     setIsDownloading(true);
     
     try {
-      const response = await apiRequest('GET', '/api/resume/download', undefined);
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'Jennifer_Lawrynn_Aka_a_CV.pdf';
-      document.body.appendChild(a);
-      a.click();
-      window.URL.revokeObjectURL(url);
-      document.body.removeChild(a);
+      // Ouvrir directement le lien de téléchargement dans un nouvel onglet
+      window.open('/api/resume/download', '_blank');
     } catch (error) {
       console.error('Error downloading CV:', error);
     } finally {
-      setIsDownloading(false);
+      // Court délai avant de réinitialiser l'état
+      setTimeout(() => {
+        setIsDownloading(false);
+      }, 1000);
     }
   };
   
