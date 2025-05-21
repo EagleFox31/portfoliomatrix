@@ -1,4 +1,6 @@
 import { users, type User, type InsertUser, type InsertContact, type ContactSubmission, contactSubmissions } from "@shared/schema";
+import { db } from "./db";
+import { eq } from "drizzle-orm";
 
 export interface IStorage {
   getUser(id: number): Promise<User | undefined>;
@@ -8,53 +10,37 @@ export interface IStorage {
   getContactSubmissions(): Promise<ContactSubmission[]>;
 }
 
-export class MemStorage implements IStorage {
-  private users: Map<number, User>;
-  private contacts: Map<number, ContactSubmission>;
-  private userCurrentId: number;
-  private contactCurrentId: number;
-
-  constructor() {
-    this.users = new Map();
-    this.contacts = new Map();
-    this.userCurrentId = 1;
-    this.contactCurrentId = 1;
-  }
-
+// Implémentation utilisant la base de données PostgreSQL
+export class DatabaseStorage implements IStorage {
   async getUser(id: number): Promise<User | undefined> {
-    return this.users.get(id);
+    const [user] = await db.select().from(users).where(eq(users.id, id));
+    return user || undefined;
   }
 
   async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username === username,
-    );
+    const [user] = await db.select().from(users).where(eq(users.username, username));
+    return user || undefined;
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {
-    const id = this.userCurrentId++;
-    const user: User = { ...insertUser, id };
-    this.users.set(id, user);
+    const [user] = await db
+      .insert(users)
+      .values(insertUser)
+      .returning();
     return user;
   }
 
   async createContactSubmission(data: InsertContact): Promise<ContactSubmission> {
-    const id = this.contactCurrentId++;
-    const now = new Date();
-    
-    const submission: ContactSubmission = { 
-      ...data, 
-      id, 
-      submittedAt: now
-    };
-    
-    this.contacts.set(id, submission);
+    const [submission] = await db
+      .insert(contactSubmissions)
+      .values(data)
+      .returning();
     return submission;
   }
 
   async getContactSubmissions(): Promise<ContactSubmission[]> {
-    return Array.from(this.contacts.values());
+    return await db.select().from(contactSubmissions);
   }
 }
 
-export const storage = new MemStorage();
+export const storage = new DatabaseStorage();
