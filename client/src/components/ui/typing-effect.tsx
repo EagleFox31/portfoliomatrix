@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
 
 interface TypingEffectProps {
@@ -15,6 +15,17 @@ const TypingEffect = ({
   const [displayText, setDisplayText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
+  const prevTextRef = useRef(text);
+
+  // Réinitialise l'animation quand le texte change (ex: changement de langue)
+  useEffect(() => {
+    if (prevTextRef.current !== text) {
+      setDisplayText('');
+      setCurrentIndex(0);
+      setIsComplete(false);
+      prevTextRef.current = text;
+    }
+  }, [text]);
 
   useEffect(() => {
     if (currentIndex < text.length) {
