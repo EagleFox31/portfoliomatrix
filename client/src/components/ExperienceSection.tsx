@@ -1,24 +1,35 @@
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/lib/LanguageContext";
 
-interface Experience {
+interface ExperienceBase {
   company: string;
   position: string;
   period: string;
-  description: string[];
   align: 'left' | 'right';
 }
 
-const experiences: Experience[] = [
+interface ExperienceData extends ExperienceBase {
+  descriptionEn: string[];
+  descriptionFr: string[];
+}
+
+const experiencesData: ExperienceData[] = [
   {
     company: "CFAO Mobility Academy",
     position: "Fullstack Developer",
     period: "Oct. 2024 – Present",
-    description: [
+    descriptionEn: [
       "Designed, developed and deployed a modular Learning Management System (LMS) using PHP, JavaScript, and MongoDB.",
       "Optimized MongoDB queries resulting in 80% faster load times and created an evolutive UML architecture.",
       "Implemented a modular admin system deployed in 2 phases, ensuring reliability and user satisfaction.",
       "Conducted code reviews, advanced debugging, and aligned processes with business objectives."
+    ],
+    descriptionFr: [
+      "Conception, développement et déploiement d'un Système de Gestion d'Apprentissage (LMS) modulaire utilisant PHP, JavaScript et MongoDB.",
+      "Optimisation des requêtes MongoDB résultant en des temps de chargement 80% plus rapides et création d'une architecture UML évolutive.",
+      "Implémentation d'un système d'administration modulaire déployé en 2 phases, assurant fiabilité et satisfaction des utilisateurs.",
+      "Réalisation de revues de code, débogage avancé et alignement des processus avec les objectifs commerciaux."
     ],
     align: 'left'
   },
@@ -26,10 +37,15 @@ const experiences: Experience[] = [
     company: "CAMI (CFAO Mobility)",
     position: "Assistant System & Network Analyst",
     period: "Jul. 2024 – Sept. 2024",
-    description: [
+    descriptionEn: [
       "Provided IT support and user assistance across the organization.",
       "Managed systems and network administration tasks.",
       "Coordinated a repair tracking platform, streamlining maintenance workflows."
+    ],
+    descriptionFr: [
+      "Fourniture de support informatique et assistance aux utilisateurs dans toute l'organisation.",
+      "Gestion des tâches d'administration système et réseau.",
+      "Coordination d'une plateforme de suivi des réparations, simplifiant les flux de travail de maintenance."
     ],
     align: 'right'
   },
@@ -37,11 +53,17 @@ const experiences: Experience[] = [
     company: "Orange Cameroun",
     position: "Analyst & Backend Developer Intern",
     period: "Aug. 2023 – Feb. 2024",
-    description: [
+    descriptionEn: [
       "Developed a request management application using ASP.NET Core MVC and Entity Framework.",
       "Conducted unit testing (xUnit) and API testing (Swagger, Postman).",
       "Implemented Keycloak authentication for secure access control.",
       "Created comprehensive technical and functional specifications documentation."
+    ],
+    descriptionFr: [
+      "Développement d'une application de gestion des demandes utilisant ASP.NET Core MVC et Entity Framework.",
+      "Réalisation de tests unitaires (xUnit) et tests d'API (Swagger, Postman).",
+      "Implémentation de l'authentification Keycloak pour un contrôle d'accès sécurisé.",
+      "Création d'une documentation complète des spécifications techniques et fonctionnelles."
     ],
     align: 'left'
   },
@@ -49,22 +71,37 @@ const experiences: Experience[] = [
     company: "CAMTEL",
     position: "Fullstack Developer Intern",
     period: "Mar. 2020 – Jul. 2020",
-    description: [
+    descriptionEn: [
       "Built a customer complaint collection platform using Java EE and Oracle DB, improving satisfaction by 36%.",
       "Performed testing, debugging, and workflow optimization, reducing resolution time by 17%.",
       "Implemented responsive UI/UX enhancements to improve user engagement."
+    ],
+    descriptionFr: [
+      "Création d'une plateforme de collecte des réclamations clients utilisant Java EE et Oracle DB, améliorant la satisfaction de 36%.",
+      "Réalisation de tests, débogage et optimisation des flux de travail, réduisant le temps de résolution de 17%.",
+      "Implémentation d'améliorations UI/UX responsive pour améliorer l'engagement des utilisateurs."
     ],
     align: 'right'
   }
 ];
 
 const ExperienceSection = () => {
+  const { t, language } = useLanguage();
+
+  const experiences = experiencesData.map(exp => ({
+    company: exp.company,
+    position: exp.position,
+    period: exp.period,
+    description: language === 'en' ? exp.descriptionEn : exp.descriptionFr,
+    align: exp.align
+  }));
+
   return (
     <section id="experience" className="py-20 relative">
       <div className="container mx-auto px-6">
         <div className="mb-12 text-center">
           <h2 className="text-3xl font-mono text-[hsl(var(--matrix-green))] mb-2">
-            <span className="text-white">&gt;</span> Experience<span className="text-white">_</span>
+            <span className="text-white">&gt;</span> {t('experience.title')}<span className="text-white">_</span>
           </h2>
           <div className="w-20 h-1 bg-[hsl(var(--matrix-green))] mx-auto"></div>
         </div>
