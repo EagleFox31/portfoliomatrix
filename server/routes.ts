@@ -37,15 +37,23 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // API endpoint for resume download
   app.get("/api/resume/download", (req, res) => {
     try {
+      // Récupération de la langue depuis la query string
+      const lang = req.query.lang as string || 'en';
+      
+      // Sélection du fichier en fonction de la langue
+      const fileName = lang === 'fr' 
+        ? 'Jennifer_Lawrynn_Aka_a_CV_INGENIEURE_LOGICIELLE_2025_MAI (2).pdf'
+        : 'Jennifer_Lawrynn_Aka_a_CV_SOFTWARE_ENGINEER_2025_ENG_MAY.pdf';
+      
       // Chemin absolu vers le fichier PDF
-      const filePath = path.join(process.cwd(), 'attached_assets', 'Jennifer_Lawrynn_Aka_a_CV_INGENIEURE_LOGICIELLE_2025_MAI.pdf');
+      const filePath = path.join(process.cwd(), 'attached_assets', fileName);
       
       console.log('Attempting to send file:', filePath);
       console.log('File exists:', fs.existsSync(filePath));
       
       if (fs.existsSync(filePath)) {
         res.setHeader('Content-Type', 'application/pdf');
-        res.setHeader('Content-Disposition', 'attachment; filename=Jennifer_Lawrynn_Aka_a_CV.pdf');
+        res.setHeader('Content-Disposition', `attachment; filename=${lang === 'fr' ? 'Jennifer_Lawrynn_Aka_a_CV_FR.pdf' : 'Jennifer_Lawrynn_Aka_a_CV_EN.pdf'}`);
         
         // Flux de lecture du fichier
         const fileStream = fs.createReadStream(filePath);
