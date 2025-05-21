@@ -1,12 +1,15 @@
 import { Card } from "@/components/ui/card";
+import { useLanguage } from "@/lib/LanguageContext";
 
 const AboutSection = () => {
+  const { t } = useLanguage();
+  
   return (
     <section id="about" className="py-20 relative">
       <div className="container mx-auto px-6">
         <div className="mb-12 text-center">
           <h2 className="text-3xl font-mono text-[hsl(var(--matrix-green))] mb-2">
-            <span className="text-white">&gt;</span> About<span className="text-white">_</span>
+            <span className="text-white">&gt;</span> {t('about')}<span className="text-white">_</span>
           </h2>
           <div className="w-20 h-1 bg-[hsl(var(--matrix-green))] mx-auto"></div>
         </div>
@@ -38,7 +41,7 @@ const AboutSection = () => {
                 href="#" 
                 className="text-[hsl(var(--matrix-teal))] hover:text-[hsl(var(--matrix-green))] transition-colors inline-flex items-center"
               >
-                <span>View Credential</span>
+                <span>{t('resume.certifications')}</span>
                 <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>

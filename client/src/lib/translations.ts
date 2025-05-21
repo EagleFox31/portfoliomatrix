@@ -11,7 +11,9 @@ export type TranslationKey =
   | 'hero.name'
   | 'hero.title'
   | 'hero.subtitle'
+  | 'hero.description'
   | 'hero.cta'
+  | 'hero.contact'
   | 'about.title'
   | 'about.description'
   | 'experience.title'
@@ -50,7 +52,9 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'hero.name': 'Jennifer Lawrynn Aka\'a',
     'hero.title': 'Full-Stack Developer',
     'hero.subtitle': 'Specializing in modern web technologies',
+    'hero.description': 'An engineer passionate about building scalable solutions, optimizing performance, and creating impactful user experiences.',
     'hero.cta': 'View My Work',
+    'hero.contact': 'Contact Me',
     'about.title': 'About Me',
     'about.description': 'I am a passionate full-stack developer with expertise in building modern, scalable web applications. With a strong foundation in both frontend and backend technologies, I create seamless digital experiences that solve real-world problems.',
     'experience.title': 'Work Experience',
@@ -88,7 +92,9 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'hero.name': 'Jennifer Lawrynn Aka\'a',
     'hero.title': 'Développeuse Full-Stack',
     'hero.subtitle': 'Spécialisée en technologies web modernes',
+    'hero.description': 'Une ingénieure passionnée par la création de solutions évolutives, l\'optimisation des performances et la conception d\'expériences utilisateur impactantes.',
     'hero.cta': 'Voir Mon Travail',
+    'hero.contact': 'Me Contacter',
     'about.title': 'À Propos de Moi',
     'about.description': 'Je suis une développeuse full-stack passionnée avec une expertise dans la création d\'applications web modernes et évolutives. Avec une solide base en technologies frontend et backend, je crée des expériences numériques fluides qui résolvent des problèmes concrets.',
     'experience.title': 'Expérience Professionnelle',

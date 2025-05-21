@@ -7,6 +7,7 @@ import { apiRequest } from "@/lib/queryClient";
 import { MapPin, Mail, Phone, Linkedin, Github, Twitter } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
+import { useLanguage } from "@/lib/LanguageContext";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters" }),
@@ -19,6 +20,7 @@ type ContactFormData = z.infer<typeof contactFormSchema>;
 
 const ContactSection = () => {
   const { toast } = useToast();
+  const { t, language } = useLanguage();
   const [formData, setFormData] = useState<ContactFormData>({
     name: "",
     email: "",
@@ -55,8 +57,10 @@ const ContactSection = () => {
       
       // Show success toast
       toast({
-        title: "Message sent!",
-        description: "Thank you for your message. I will get back to you soon.",
+        title: language === 'fr' ? "Message envoyé !" : "Message sent!",
+        description: language === 'fr' 
+          ? "Merci pour votre message. Je vous répondrai dès que possible." 
+          : "Thank you for your message. I will get back to you soon.",
         variant: "default",
       });
       

@@ -49,7 +49,7 @@ const HeroSection = () => {
           )}
           
           <p className="text-lg text-gray-300 mb-10 max-w-2xl mx-auto">
-            {t('hero.subtitle')}
+            {t('hero.description')}
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -65,7 +65,7 @@ const HeroSection = () => {
               onClick={handleScrollToSection('contact')}
               className="bg-[hsl(var(--matrix-green))] text-black px-8 py-3 rounded-md font-mono hover:bg-[hsl(var(--matrix-teal))] transition-colors duration-300"
             >
-              {t('contact')}
+              {t('hero.contact')}
             </a>
           </div>
           
