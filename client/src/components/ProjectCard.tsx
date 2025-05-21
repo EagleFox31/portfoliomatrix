@@ -52,7 +52,6 @@ const ProjectCard = ({
               </span>
             ))}
           </div>
-          <p className="text-[hsl(var(--matrix-teal))] text-sm">Click to view details</p>
         </div>
         
         <div className="project-card-back border border-[hsl(var(--matrix-green))]/30 bg-black/80 backdrop-blur-sm rounded-xl p-6">
