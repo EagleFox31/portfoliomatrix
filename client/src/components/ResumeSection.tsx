@@ -6,13 +6,13 @@ import { useState } from "react";
 const ResumeSection = () => {
   const [isDownloading, setIsDownloading] = useState(false);
   
-  const handleDownloadCV = async (e: React.MouseEvent) => {
+  const handleDownloadCV = (e: React.MouseEvent) => {
     e.preventDefault();
     setIsDownloading(true);
     
     try {
-      // Ouvrir directement le lien de téléchargement dans un nouvel onglet
-      window.open('/api/resume/download', '_blank');
+      // Lien direct vers le fichier PDF dans le dossier public
+      window.open('/Jennifer_Lawrynn_Aka_a_CV.pdf', '_blank');
     } catch (error) {
       console.error('Error downloading CV:', error);
     } finally {
