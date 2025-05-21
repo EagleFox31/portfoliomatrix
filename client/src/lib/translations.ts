@@ -38,6 +38,9 @@ export type TranslationKey =
   | 'skills.additional'
   | 'projects.title'
   | 'projects.featured'
+  | 'parallax.title'
+  | 'parallax.description'
+  | 'parallax.cta'
   | 'resume.title'
   | 'resume.download'
   | 'resume.education'
@@ -92,6 +95,9 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'skills.additional': 'Additional Expertise',
     'projects.title': 'My Projects',
     'projects.featured': 'Featured Projects',
+    'parallax.title': 'Transforming Ideas into Digital Reality',
+    'parallax.description': 'With a blend of technical expertise and creative problem-solving, I build solutions that make a difference.',
+    'parallax.cta': 'Explore My Projects',
     'resume.title': 'My Resume',
     'resume.download': 'Download CV',
     'resume.education': 'Education',
@@ -145,6 +151,9 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'skills.additional': 'Expertises Complémentaires',
     'projects.title': 'Mes Projets',
     'projects.featured': 'Projets Phares',
+    'parallax.title': 'Transformer des Idées en Réalité Numérique',
+    'parallax.description': 'Avec un mélange d\'expertise technique et de résolution créative de problèmes, je construis des solutions qui font la différence.',
+    'parallax.cta': 'Explorer Mes Projets',
     'resume.title': 'Mon CV',
     'resume.download': 'Télécharger CV',
     'resume.education': 'Formation',

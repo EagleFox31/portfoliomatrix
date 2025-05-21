@@ -1,8 +1,10 @@
 import { useEffect, useRef } from 'react';
+import { useLanguage } from '@/lib/LanguageContext';
 
 const ParallaxSection = () => {
   const parallaxRef = useRef<HTMLDivElement>(null);
   const bgRef = useRef<HTMLDivElement>(null);
+  const { t } = useLanguage();
   
   const handleScrollToProjects = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -53,10 +55,10 @@ const ParallaxSection = () => {
       <div className="container mx-auto px-6 z-10 text-center">
         <div className="mb-8">
           <h2 className="text-3xl md:text-4xl font-mono text-[hsl(var(--matrix-green))] mb-6">
-            Transforming Ideas into Digital Reality
+            {t('parallax.title')}
           </h2>
           <p className="text-lg text-white max-w-2xl mx-auto">
-            With a blend of technical expertise and creative problem-solving, I build solutions that make a difference.
+            {t('parallax.description')}
           </p>
         </div>
         
@@ -65,7 +67,7 @@ const ParallaxSection = () => {
           onClick={handleScrollToProjects}
           className="inline-block bg-[hsl(var(--matrix-green))] text-black px-8 py-3 rounded-md font-mono hover:bg-[hsl(var(--matrix-teal))] transition-colors duration-300"
         >
-          Explore My Projects
+          {t('parallax.cta')}
         </a>
       </div>
     </section>
