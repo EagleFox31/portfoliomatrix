@@ -5,6 +5,7 @@ import path from "path";
 import fs from "fs";
 import { insertContactSchema } from "@shared/schema";
 import { z } from "zod";
+import { formatContactMessage, sendTelegramMessage } from "./telegram";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // API endpoint for contact form submissions
