@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import TypingEffect from '@/components/ui/typing-effect';
 import { ChevronDown, Github, Linkedin, Mail } from 'lucide-react';
+import { useLanguage } from '@/lib/LanguageContext';
 
 const HeroSection = () => {
   const [showSubtitle, setShowSubtitle] = useState(false);
+  const { t } = useLanguage();
   
   useEffect(() => {
     // Delay subtitle appearance for better effect
@@ -29,23 +31,25 @@ const HeroSection = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="container mx-auto px-6 py-20 z-10 relative">
         <div className="max-w-4xl mx-auto text-center">
+          <p className="text-xl text-[hsl(var(--matrix-teal))] mb-2 font-mono">
+            {t('hero.greeting')}
+          </p>
           <h1 className="text-4xl md:text-6xl font-mono text-white mb-6" id="hero-title">
             <span className="text-[hsl(var(--matrix-green))]">&lt;</span>
-            <TypingEffect text="Jennifer Lawrynn Aka'a" typingSpeed={70} />
+            <TypingEffect text={t('hero.name')} typingSpeed={70} />
             <span className="text-[hsl(var(--matrix-green))]">/&gt;</span>
           </h1>
           
           {showSubtitle && (
             <div className="overflow-hidden h-12">
               <p className="text-xl md:text-2xl font-mono text-[hsl(var(--matrix-green))] typing-animation mb-8">
-                Fullstack Developer | AWS Certified
+                {t('hero.title')} | AWS Certified
               </p>
             </div>
           )}
           
           <p className="text-lg text-gray-300 mb-10 max-w-2xl mx-auto">
-            An engineer passionate about building scalable solutions, optimizing performance, 
-            and creating impactful user experiences.
+            {t('hero.subtitle')}
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -54,14 +58,14 @@ const HeroSection = () => {
               onClick={handleScrollToSection('projects')}
               className="bg-transparent border-2 border-[hsl(var(--matrix-green))] text-[hsl(var(--matrix-green))] px-8 py-3 rounded-md font-mono hover:bg-[hsl(var(--matrix-green))] hover:text-black transition-colors duration-300"
             >
-              View My Work
+              {t('hero.cta')}
             </a>
             <a 
               href="#contact" 
               onClick={handleScrollToSection('contact')}
               className="bg-[hsl(var(--matrix-green))] text-black px-8 py-3 rounded-md font-mono hover:bg-[hsl(var(--matrix-teal))] transition-colors duration-300"
             >
-              Contact Me
+              {t('contact')}
             </a>
           </div>
           

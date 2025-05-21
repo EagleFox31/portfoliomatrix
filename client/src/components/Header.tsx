@@ -1,18 +1,21 @@
 import { useState } from 'react';
 import { Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useLanguage } from '@/lib/LanguageContext';
+import { LanguageToggle } from './LanguageToggle';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { t } = useLanguage();
   
   const toggleMobileMenu = () => setMobileMenuOpen(prev => !prev);
   
   const menuItems = [
-    { title: "_about", href: "#about" },
-    { title: "_experience", href: "#experience" },
-    { title: "_skills", href: "#skills" },
-    { title: "_projects", href: "#projects" },
-    { title: "_contact", href: "#contact" }
+    { key: 'about', href: "#about" },
+    { key: 'experience', href: "#experience" },
+    { key: 'skills', href: "#skills" },
+    { key: 'projects', href: "#projects" },
+    { key: 'contact', href: "#contact" }
   ];
   
   const handleNavClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
@@ -40,7 +43,7 @@ const Header = () => {
           </h1>
         </div>
         
-        <nav className="hidden md:block">
+        <nav className="hidden md:flex items-center space-x-8">
           <ul className="flex space-x-8">
             {menuItems.map((item, index) => (
               <li key={index}>
@@ -49,20 +52,24 @@ const Header = () => {
                   className="font-mono text-white hover:text-[hsl(var(--matrix-green))] transition-colors"
                   onClick={handleNavClick}
                 >
-                  {item.title}
+                  _{t(item.key as any)}
                 </a>
               </li>
             ))}
           </ul>
+          <LanguageToggle />
         </nav>
         
-        <button 
-          className="md:hidden text-white focus:outline-none" 
-          onClick={toggleMobileMenu}
-          aria-label="Toggle mobile menu"
-        >
-          <Menu className="h-6 w-6" />
-        </button>
+        <div className="flex items-center space-x-4 md:hidden">
+          <LanguageToggle />
+          <button 
+            className="text-white focus:outline-none" 
+            onClick={toggleMobileMenu}
+            aria-label="Toggle mobile menu"
+          >
+            <Menu className="h-6 w-6" />
+          </button>
+        </div>
       </div>
       
       <div className={cn("md:hidden", mobileMenuOpen ? "block" : "hidden")}>
@@ -74,7 +81,7 @@ const Header = () => {
               className="block font-mono text-white hover:text-[hsl(var(--matrix-green))] py-2"
               onClick={handleNavClick}
             >
-              {item.title}
+              _{t(item.key as any)}
             </a>
           ))}
         </div>
