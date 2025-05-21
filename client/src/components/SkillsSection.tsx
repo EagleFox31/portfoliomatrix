@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card";
 import SkillBar from "@/components/ui/skill-bar";
+import { useLanguage } from "@/lib/LanguageContext";
 
 interface SkillCategory {
   title: string;
@@ -9,69 +10,71 @@ interface SkillCategory {
   }[];
 }
 
-const skillCategories: SkillCategory[] = [
-  {
-    title: "Backend Development",
-    skills: [
-      { name: "Python & Django", percentage: 90 },
-      { name: "PHP & Laravel", percentage: 85 },
-      { name: "Node.js & Express", percentage: 80 },
-      { name: "ASP.NET Core MVC", percentage: 75 },
-      { name: "REST APIs & Documentation", percentage: 85 }
-    ]
-  },
-  {
-    title: "Frontend Development",
-    skills: [
-      { name: "JavaScript", percentage: 90 },
-      { name: "HTML5 & CSS3", percentage: 85 },
-      { name: "React.js", percentage: 80 },
-      { name: "Next.js", percentage: 75 },
-      { name: "Responsive Design", percentage: 85 }
-    ]
-  },
-  {
-    title: "Databases & Storage",
-    skills: [
-      { name: "MongoDB", percentage: 85 },
-      { name: "PostgreSQL", percentage: 80 },
-      { name: "MySQL", percentage: 85 },
-      { name: "Oracle DB", percentage: 75 },
-      { name: "Database Optimization", percentage: 80 }
-    ]
-  },
-  {
-    title: "Cloud & DevOps",
-    skills: [
-      { name: "AWS Services", percentage: 90 },
-      { name: "Docker", percentage: 80 },
-      { name: "Git & GitHub", percentage: 85 },
-      { name: "CI/CD Pipelines", percentage: 75 },
-      { name: "Infrastructure as Code", percentage: 70 }
-    ]
-  }
-];
-
-const additionalSkills = [
-  "Authentication & Security",
-  "Test-Driven Development",
-  "UML Design",
-  "Keycloak",
-  "Swagger",
-  "Postman",
-  "TypeScript",
-  "User Experience Design",
-  "Code First Approach",
-  "Problem Solving"
-];
-
 const SkillsSection = () => {
+  const { t } = useLanguage();
+
+  const skillCategories: SkillCategory[] = [
+    {
+      title: t('skills.backend'),
+      skills: [
+        { name: "Python & Django", percentage: 90 },
+        { name: "PHP & Laravel", percentage: 85 },
+        { name: "Node.js & Express", percentage: 80 },
+        { name: "ASP.NET Core MVC", percentage: 75 },
+        { name: "REST APIs & Documentation", percentage: 85 }
+      ]
+    },
+    {
+      title: t('skills.frontend'),
+      skills: [
+        { name: "JavaScript", percentage: 90 },
+        { name: "HTML5 & CSS3", percentage: 85 },
+        { name: "React.js", percentage: 80 },
+        { name: "Next.js", percentage: 75 },
+        { name: "Responsive Design", percentage: 85 }
+      ]
+    },
+    {
+      title: t('skills.database'),
+      skills: [
+        { name: "MongoDB", percentage: 85 },
+        { name: "PostgreSQL", percentage: 80 },
+        { name: "MySQL", percentage: 85 },
+        { name: "Oracle DB", percentage: 75 },
+        { name: "Database Optimization", percentage: 80 }
+      ]
+    },
+    {
+      title: t('skills.cloud'),
+      skills: [
+        { name: "AWS Services", percentage: 90 },
+        { name: "Docker", percentage: 80 },
+        { name: "Git & GitHub", percentage: 85 },
+        { name: "CI/CD Pipelines", percentage: 75 },
+        { name: "Infrastructure as Code", percentage: 70 }
+      ]
+    }
+  ];
+
+  const additionalSkills = [
+    "Authentication & Security",
+    "Test-Driven Development",
+    "UML Design",
+    "Keycloak",
+    "Swagger",
+    "Postman",
+    "TypeScript",
+    "User Experience Design",
+    "Code First Approach",
+    "Problem Solving"
+  ];
+
   return (
     <section id="skills" className="py-20 relative">
       <div className="container mx-auto px-6">
         <div className="mb-12 text-center">
           <h2 className="text-3xl font-mono text-[hsl(var(--matrix-green))] mb-2">
-            <span className="text-white">&gt;</span> Skills<span className="text-white">_</span>
+            <span className="text-white">&gt;</span> {t('skills.title')}<span className="text-white">_</span>
           </h2>
           <div className="w-20 h-1 bg-[hsl(var(--matrix-green))] mx-auto"></div>
         </div>
@@ -99,7 +102,7 @@ const SkillsSection = () => {
 
         {/* Additional Skills Tags */}
         <div className="mt-12">
-          <h3 className="text-xl font-mono text-[hsl(var(--matrix-green))] mb-6 text-center">Additional Expertise</h3>
+          <h3 className="text-xl font-mono text-[hsl(var(--matrix-green))] mb-6 text-center">{t('skills.additional')}</h3>
           <div className="flex flex-wrap justify-center gap-3">
             {additionalSkills.map((skill, index) => (
               <span 

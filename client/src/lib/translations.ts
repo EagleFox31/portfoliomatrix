@@ -19,6 +19,11 @@ export type TranslationKey =
   | 'about.engineer'
   | 'about.developed'
   | 'about.looking'
+  | 'about.certifications'
+  | 'about.education'
+  | 'about.university'
+  | 'about.educationDesc'
+  | 'about.view'
   | 'experience.title'
   | 'experience.location'
   | 'skills.title'
@@ -26,6 +31,11 @@ export type TranslationKey =
   | 'skills.frameworks'
   | 'skills.tools'
   | 'skills.languages'
+  | 'skills.backend'
+  | 'skills.frontend'
+  | 'skills.database'
+  | 'skills.cloud'
+  | 'skills.additional'
   | 'projects.title'
   | 'projects.featured'
   | 'resume.title'
@@ -63,6 +73,11 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'about.engineer': 'Fullstack Engineer with 2 years of experience specializing in Python, PHP, and JavaScript. AWS Certified Solutions Architect with expertise in designing and deploying scalable business solutions.',
     'about.developed': 'I\'ve developed Learning Management Systems, Computerized Maintenance Management Systems, and web platforms that prioritize performance, security, and user impact.',
     'about.looking': 'I\'m looking for challenging opportunities where I can innovate and contribute to digital transformation.',
+    'about.certifications': 'AWS Certified Solutions Architect – Associate',
+    'about.education': 'Master in Engineering Sciences, Computer Engineering',
+    'about.university': 'Protestant University of Central Africa, Yaoundé, Cameroon',
+    'about.educationDesc': 'Developed a Digital Patient Record coupled with ML-assisted diagnosis (Python, Laravel, MySQL).',
+    'about.view': 'View Credential',
     'experience.title': 'Work Experience',
     'experience.location': 'Location',
     'skills.title': 'My Skills',
@@ -70,6 +85,11 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'skills.frameworks': 'Frameworks & Libraries',
     'skills.tools': 'Tools & Technologies',
     'skills.languages': 'Languages',
+    'skills.backend': 'Backend Development',
+    'skills.frontend': 'Frontend Development',
+    'skills.database': 'Databases & Storage',
+    'skills.cloud': 'Cloud & DevOps',
+    'skills.additional': 'Additional Expertise',
     'projects.title': 'My Projects',
     'projects.featured': 'Featured Projects',
     'resume.title': 'My Resume',
@@ -106,6 +126,11 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'about.engineer': 'Ingénieure Full-Stack avec 2 ans d\'expérience spécialisée en Python, PHP et JavaScript. Solutions Architect certifiée AWS avec expertise dans la conception et le déploiement de solutions d\'entreprise évolutives.',
     'about.developed': 'J\'ai développé des Systèmes de Gestion d\'Apprentissage, des Systèmes GMAO, et des plateformes web qui privilégient la performance, la sécurité et l\'impact utilisateur.',
     'about.looking': 'Je recherche des opportunités stimulantes où je peux innover et contribuer à la transformation numérique.',
+    'about.certifications': 'AWS Certified Solutions Architect – Associate',
+    'about.education': 'Master en Sciences de l\'Ingénieur, Génie Informatique',
+    'about.university': 'Université Protestante d\'Afrique Centrale, Yaoundé, Cameroun',
+    'about.educationDesc': 'Développement d\'un Dossier Patient Numérique couplé à un diagnostic assisté par IA (Python, Laravel, MySQL).',
+    'about.view': 'Voir le Certificat',
     'experience.title': 'Expérience Professionnelle',
     'experience.location': 'Lieu',
     'skills.title': 'Mes Compétences',
@@ -113,6 +138,11 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'skills.frameworks': 'Frameworks & Bibliothèques',
     'skills.tools': 'Outils & Technologies',
     'skills.languages': 'Langues',
+    'skills.backend': 'Développement Backend',
+    'skills.frontend': 'Développement Frontend',
+    'skills.database': 'Bases de Données & Stockage',
+    'skills.cloud': 'Cloud & DevOps',
+    'skills.additional': 'Expertises Complémentaires',
     'projects.title': 'Mes Projets',
     'projects.featured': 'Projets Phares',
     'resume.title': 'Mon CV',
