@@ -49,11 +49,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const filePath = path.join(process.cwd(), 'attached_assets', fileName);
       
       console.log('Attempting to send file:', filePath);
+      console.log('Language:', lang);
       console.log('File exists:', fs.existsSync(filePath));
       
       if (fs.existsSync(filePath)) {
         res.setHeader('Content-Type', 'application/pdf');
-        res.setHeader('Content-Disposition', `attachment; filename=${lang === 'fr' ? 'Jennifer_Lawrynn_Aka_a_CV_FR.pdf' : 'Jennifer_Lawrynn_Aka_a_CV_EN.pdf'}`);
+        const downloadName = lang === 'fr' ? 'Jennifer_Lawrynn_Aka_a_CV_FR.pdf' : 'Jennifer_Lawrynn_Aka_a_CV_EN.pdf';
+        res.setHeader('Content-Disposition', `attachment; filename=${downloadName}`);
         
         // Flux de lecture du fichier
         const fileStream = fs.createReadStream(filePath);

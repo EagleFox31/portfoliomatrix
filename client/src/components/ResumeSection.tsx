@@ -12,11 +12,16 @@ const ResumeSection = () => {
     setIsDownloading(true);
     
     try {
-      // Utilise notre API pour télécharger le CV selon la langue sélectionnée
-      const apiUrl = `/api/resume/download?lang=${language}`;
+      // Accès direct aux fichiers PDF dans le dossier public
+      const pdfPath = language === 'fr' ? '/Jennifer_Lawrynn_Aka_a_CV_FR.pdf' : '/Jennifer_Lawrynn_Aka_a_CV_EN.pdf';
       
-      // Ouvre la fenêtre de téléchargement
-      window.open(apiUrl, '_blank');
+      // Utilisation de window.location pour forcer le téléchargement
+      const link = document.createElement('a');
+      link.href = pdfPath;
+      link.download = language === 'fr' ? 'Jennifer_Lawrynn_Aka_a_CV_FR.pdf' : 'Jennifer_Lawrynn_Aka_a_CV_EN.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     } catch (error) {
       console.error('Error downloading CV:', error);
     } finally {
