@@ -35,15 +35,6 @@ const AboutSection = () => {
                 <span className="font-medium">{t('about.certifications')}</span>
                 <span className="text-[hsl(var(--matrix-green))] font-mono">July 2023</span>
               </div>
-              <a 
-                href="#" 
-                className="text-[hsl(var(--matrix-teal))] hover:text-[hsl(var(--matrix-green))] transition-colors inline-flex items-center"
-              >
-                <span>{t('about.view')}</span>
-                <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-              </a>
             </div>
             
             <h3 className="text-xl font-mono text-[hsl(var(--matrix-green))] mb-4">$ cat education.txt</h3>
