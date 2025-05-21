@@ -16,6 +16,9 @@ export type TranslationKey =
   | 'hero.contact'
   | 'about.title'
   | 'about.description'
+  | 'about.engineer'
+  | 'about.developed'
+  | 'about.looking'
   | 'experience.title'
   | 'experience.location'
   | 'skills.title'
@@ -57,6 +60,9 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'hero.contact': 'Contact Me',
     'about.title': 'About Me',
     'about.description': 'I am a passionate full-stack developer with expertise in building modern, scalable web applications. With a strong foundation in both frontend and backend technologies, I create seamless digital experiences that solve real-world problems.',
+    'about.engineer': 'Fullstack Engineer with 2 years of experience specializing in Python, PHP, and JavaScript. AWS Certified Solutions Architect with expertise in designing and deploying scalable business solutions.',
+    'about.developed': 'I\'ve developed Learning Management Systems, Computerized Maintenance Management Systems, and web platforms that prioritize performance, security, and user impact.',
+    'about.looking': 'I\'m looking for challenging opportunities where I can innovate and contribute to digital transformation.',
     'experience.title': 'Work Experience',
     'experience.location': 'Location',
     'skills.title': 'My Skills',
@@ -97,6 +103,9 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'hero.contact': 'Me Contacter',
     'about.title': 'À Propos de Moi',
     'about.description': 'Je suis une développeuse full-stack passionnée avec une expertise dans la création d\'applications web modernes et évolutives. Avec une solide base en technologies frontend et backend, je crée des expériences numériques fluides qui résolvent des problèmes concrets.',
+    'about.engineer': 'Ingénieure Full-Stack avec 2 ans d\'expérience spécialisée en Python, PHP et JavaScript. Solutions Architect certifiée AWS avec expertise dans la conception et le déploiement de solutions d\'entreprise évolutives.',
+    'about.developed': 'J\'ai développé des Systèmes de Gestion d\'Apprentissage, des Systèmes GMAO, et des plateformes web qui privilégient la performance, la sécurité et l\'impact utilisateur.',
+    'about.looking': 'Je recherche des opportunités stimulantes où je peux innover et contribuer à la transformation numérique.',
     'experience.title': 'Expérience Professionnelle',
     'experience.location': 'Lieu',
     'skills.title': 'Mes Compétences',

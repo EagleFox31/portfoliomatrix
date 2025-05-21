@@ -18,15 +18,13 @@ const AboutSection = () => {
           <Card className="border border-[hsl(var(--matrix-green))]/30 bg-black/60 backdrop-blur-sm rounded-lg p-6 shadow-lg shadow-[hsl(var(--matrix-green))]/10">
             <h3 className="text-xl font-mono text-[hsl(var(--matrix-green))] mb-4">$ whoami</h3>
             <p className="text-gray-300 mb-4">
-              Fullstack Engineer with 2+ years of experience specializing in Python, PHP, and JavaScript. 
-              AWS Certified Solutions Architect with expertise in designing and deploying scalable business solutions.
+              {t('about.engineer')}
             </p>
             <p className="text-gray-300 mb-4">
-              I've developed Learning Management Systems, Computerized Maintenance Management Systems, 
-              and web platforms that prioritize performance, security, and user impact.
+              {t('about.developed')}
             </p>
             <p className="text-gray-300">
-              I'm looking for challenging opportunities where I can innovate and contribute to digital transformation.
+              {t('about.looking')}
             </p>
           </Card>
           
