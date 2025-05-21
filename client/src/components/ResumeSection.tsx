@@ -13,7 +13,7 @@ const ResumeSection = () => {
     
     try {
       // Sélectionne le CV en français ou en anglais selon la langue choisie
-      const cvFileName = language === 'fr' ? '/Jennifer_Lawrynn_Aka_a_CV_FR.pdf' : '/Jennifer_Lawrynn_Aka_a_CV.pdf';
+      const cvFileName = language === 'fr' ? '/Jennifer_Lawrynn_Aka_a_CV_FR.pdf' : '/Jennifer_Lawrynn_Aka_a_CV_EN.pdf';
       window.open(cvFileName, '_blank');
     } catch (error) {
       console.error('Error downloading CV:', error);
