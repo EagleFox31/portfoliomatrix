@@ -52,22 +52,7 @@ const HeroSection = () => {
             {t('hero.description')}
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="#projects" 
-              onClick={handleScrollToSection('projects')}
-              className="bg-transparent border-2 border-[hsl(var(--matrix-green))] text-[hsl(var(--matrix-green))] px-8 py-3 rounded-md font-mono hover:bg-[hsl(var(--matrix-green))] hover:text-black transition-colors duration-300"
-            >
-              {t('hero.cta')}
-            </a>
-            <a 
-              href="#contact" 
-              onClick={handleScrollToSection('contact')}
-              className="bg-[hsl(var(--matrix-green))] text-black px-8 py-3 rounded-md font-mono hover:bg-[hsl(var(--matrix-teal))] transition-colors duration-300"
-            >
-              {t('hero.contact')}
-            </a>
-          </div>
+
           
           <div className="mt-12 flex justify-center space-x-6">
             <a 
