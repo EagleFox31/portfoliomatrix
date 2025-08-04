@@ -64,7 +64,7 @@ const MatrixRain = () => {
   
   return (
     <div 
-      className="fixed top-0 left-0 w-full h-full overflow-hidden z-0 opacity-20 pointer-events-none"
+      className="fixed top-0 left-0 w-full h-full overflow-hidden z-0 opacity-30 pointer-events-none"
       ref={containerRef}
     >
       {createRaindrops()}

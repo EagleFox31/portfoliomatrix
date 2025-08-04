@@ -271,4 +271,9 @@
   animation: enhanced-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
+/* Animation pour la pluie Matrix globale */
+.animate-digital-rain {
+  animation: digital-rain 15s linear infinite;
+}
+
 
