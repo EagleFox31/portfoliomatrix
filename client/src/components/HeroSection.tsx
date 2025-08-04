@@ -84,7 +84,7 @@ const HeroSection = () => {
         </div>
       </div>
       
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 animate-bounce">
         <a 
           href="#about"
           onClick={handleScrollToSection('about')}
