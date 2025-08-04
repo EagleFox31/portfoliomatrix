@@ -1,6 +1,43 @@
+################################################################
+#  Base Node / Vite
+################################################################
 node_modules
-dist
+dist/                    # build Vite (généré)
+.vite/                   # cache Vite
+
+################################################################
+#  Mac / OS généraux
+################################################################
 .DS_Store
-server/public
-vite.config.ts.*
+Thumbs.db
+
+################################################################
+#  Fichiers de config locaux
+################################################################
+.env                      # variables sensibles
+.env.*                    # ex. .env.production
+.local
+.replit
+.vscode/
+.idea/
+*.swp                     # fichiers temporaires Vim
+*.log                     # logs locaux
+
+################################################################
+#  Archives & binaires
+################################################################
 *.tar.gz
+*.zip
+*.tgz
+*.gz
+*.rar
+*.7z
+
+################################################################
+#  Déploiements & previews
+################################################################
+.vercel/                  # dossier de builds Vercel
+.netlify/                 # si tu testes Netlify
+.cloudflare/              # config locale Pages
+*.vercel              
+
