@@ -203,7 +203,7 @@ const ContactSection = () => {
                   <h4 className="text-white font-medium mb-1">
                     {language === 'fr' ? "Localisation" : "Location"}
                   </h4>
-                  <p className="text-gray-300">Douala et Yaoundé, Cameroun</p>
+                  <p className="text-gray-300">Douala, Cameroun</p>
                 </div>
               </div>
               
