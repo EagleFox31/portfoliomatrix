@@ -41,8 +41,8 @@ const certifications: Certification[] = [
     organization: 'Google',
     date: 'May 2025',
     dateFr: 'Mai 2025',
-    skills: ['Risk Management', 'Security Controls', 'Data Ethics'],
-    skillsFr: ['Gestion des Risques', 'Contrôles de Sécurité', 'Éthique des Données'],
+    skills: ['Security Management', 'Cyber Attacks', 'Data Ethics', 'Network Security', 'Data Security', 'Security Information and Event Management (SIEM)', 'Threat Detection', 'Enterprise Security', 'Cybersecurity', 'Incident Response', 'Information Privacy', 'Computer Security'],
+    skillsFr: ['Gestion de la Sécurité', 'Cyberattaques', 'Éthique des Données', 'Sécurité Réseau', 'Sécurité des Données', 'Gestion des Informations et Événements de Sécurité (SIEM)', 'Détection de Menaces', 'Sécurité d\'Entreprise', 'Cybersécurité', 'Réponse aux Incidents', 'Confidentialité des Informations', 'Sécurité Informatique'],
     link: 'https://www.coursera.org/account/accomplishments/verify/YI76AYVEU18O',
     certificateFile: '/certificates/google-cybersecurity.pdf',
     status: 'completed'
@@ -54,8 +54,8 @@ const certifications: Certification[] = [
     organization: 'Cisco Learning',
     date: 'August 2024',
     dateFr: 'Août 2024',
-    skills: ['SOC Operations', 'SIEM', 'Detection & Response'],
-    skillsFr: ['Opérations SOC', 'SIEM', 'Détection et Réponse'],
+    skills: ['Cyber Threat Intelligence', 'Network Monitoring', 'Automation', 'Security Information and Event Management (SIEM)', 'Threat Detection', 'System Monitoring', 'Cyber Operations', 'Cybersecurity', 'Computer Security Incident Management', 'Incident Response'],
+    skillsFr: ['Intelligence des Menaces Cyber', 'Surveillance Réseau', 'Automatisation', 'Gestion des Informations et Événements de Sécurité (SIEM)', 'Détection de Menaces', 'Surveillance Système', 'Opérations Cyber', 'Cybersécurité', 'Gestion des Incidents de Sécurité Informatique', 'Réponse aux Incidents'],
     link: 'https://www.coursera.org/account/accomplishments/verify/MCLMOZ1TA3K2',
     certificateFile: '/certificates/soc-operations.pdf',
     status: 'completed'
@@ -266,7 +266,7 @@ export default function CertificationsSection() {
                           window.open(cert.link, '_blank', 'noopener,noreferrer');
                         }}
                         className={`bg-[hsl(var(--matrix-green))]/10 text-[hsl(var(--matrix-green))] border border-[hsl(var(--matrix-green))]/30 hover:bg-[hsl(var(--matrix-green))]/20 hover:scale-105 h-8 text-xs font-mono transition-all duration-300 ${
-                          hoveredCard === cert.id ? 'animate-pulse shadow-lg shadow-[hsl(var(--matrix-green))]/20 border-[hsl(var(--matrix-green))]/60' : ''
+                          hoveredCard === cert.id ? 'shadow-lg shadow-[hsl(var(--matrix-green))]/20 border-[hsl(var(--matrix-green))]/60' : ''
                         }`}
                         variant="outline"
                       >
