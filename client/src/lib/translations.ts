@@ -46,6 +46,14 @@ export type TranslationKey =
   | 'resume.education'
   | 'resume.experience'
   | 'resume.certifications'
+  | 'resume.backend'
+  | 'resume.frontend'
+  | 'resume.apis'
+  | 'resume.cloud'
+  | 'resume.databases'
+  | 'resume.tools'
+  | 'resume.methodologies'
+  | 'resume.languages'
   | 'contact.title'
   | 'contact.name'
   | 'contact.email'
@@ -103,6 +111,14 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'resume.education': 'Education',
     'resume.experience': 'Professional Experience',
     'resume.certifications': 'Certifications',
+    'resume.backend': 'Back-end',
+    'resume.frontend': 'Front-end',
+    'resume.apis': 'APIs',
+    'resume.cloud': 'Cloud',
+    'resume.databases': 'Databases',
+    'resume.tools': 'Tools & CI/CD',
+    'resume.methodologies': 'Methodologies',
+    'resume.languages': 'Languages',
     'contact.title': 'Get In Touch',
     'contact.name': 'Name',
     'contact.email': 'Email',
@@ -159,6 +175,14 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'resume.education': 'Formation',
     'resume.experience': 'Expérience Professionnelle',
     'resume.certifications': 'Certifications',
+    'resume.backend': 'Back-end',
+    'resume.frontend': 'Front-end',
+    'resume.apis': 'APIs',
+    'resume.cloud': 'Cloud',
+    'resume.databases': 'Bases de données',
+    'resume.tools': 'Outils & CI/CD',
+    'resume.methodologies': 'Méthodologies',
+    'resume.languages': 'Langues',
     'contact.title': 'Me Contacter',
     'contact.name': 'Nom',
     'contact.email': 'Email',

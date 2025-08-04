@@ -76,35 +76,35 @@ const ResumeSection = () => {
               <h4 className="text-xl font-mono text-[hsl(var(--matrix-green))] mb-4">$ cat skills.txt</h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <p className="text-white font-medium mb-2">{language === 'fr' ? 'Back-end:' : 'Back-end:'}</p>
+                  <p className="text-white font-medium mb-2">{t('resume.backend')}:</p>
                   <p className="text-gray-300">Python, C, PHP, Django, Laravel, ASP.NET Core MVC, Node.js, Express.js</p>
                 </div>
                 <div>
-                  <p className="text-white font-medium mb-2">{language === 'fr' ? 'Front-end:' : 'Front-end:'}</p>
+                  <p className="text-white font-medium mb-2">{t('resume.frontend')}:</p>
                   <p className="text-gray-300">JavaScript, HTML5, CSS, React.js, Next.js</p>
                 </div>
                 <div>
-                  <p className="text-white font-medium mb-2">APIs:</p>
+                  <p className="text-white font-medium mb-2">{t('resume.apis')}:</p>
                   <p className="text-gray-300">Django REST, Swagger, Postman</p>
                 </div>
                 <div>
-                  <p className="text-white font-medium mb-2">Cloud:</p>
+                  <p className="text-white font-medium mb-2">{t('resume.cloud')}:</p>
                   <p className="text-gray-300">AWS (EC2, Lambda, RDS, S3, VPC, ELB, CloudFront, IAM, KMS, CloudWatch, CloudFormation, SNS, SQS)</p>
                 </div>
                 <div>
-                  <p className="text-white font-medium mb-2">{language === 'fr' ? 'Bases de données:' : 'Databases:'}</p>
+                  <p className="text-white font-medium mb-2">{t('resume.databases')}:</p>
                   <p className="text-gray-300">MongoDB, PostgreSQL, MySQL, OracleDB, SQLite</p>
                 </div>
                 <div>
-                  <p className="text-white font-medium mb-2">{language === 'fr' ? 'Outils & CI/CD:' : 'Tools & CI/CD:'}</p>
+                  <p className="text-white font-medium mb-2">{t('resume.tools')}:</p>
                   <p className="text-gray-300">Git, GitHub, Docker, Keycloak</p>
                 </div>
                 <div>
-                  <p className="text-white font-medium mb-2">{language === 'fr' ? 'Méthodologies:' : 'Methodologies:'}</p>
+                  <p className="text-white font-medium mb-2">{t('resume.methodologies')}:</p>
                   <p className="text-gray-300">UML, TDD, Code First</p>
                 </div>
                 <div>
-                  <p className="text-white font-medium mb-2">{language === 'fr' ? 'Langues:' : 'Languages:'}</p>
+                  <p className="text-white font-medium mb-2">{t('resume.languages')}:</p>
                   <p className="text-gray-300">{language === 'fr' ? 'Français (Natif), Anglais (Intermédiaire)' : 'French (Native), English (Intermediate)'}</p>
                 </div>
               </div>
