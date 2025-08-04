@@ -16,20 +16,16 @@ interface ExperienceData extends ExperienceBase {
 
 const experiencesData: ExperienceData[] = [
   {
-    company: "CFAO Mobility Academy",
+    company: "CFAO Mobility Cameroun",
     position: "Fullstack Developer",
     period: "Oct. 2024 – Present",
     descriptionEn: [
-      "Designed, developed and deployed a modular Learning Management System (LMS) using PHP, JavaScript, and MongoDB.",
-      "Optimized MongoDB queries resulting in 80% faster load times and created an evolutive UML architecture.",
-      "Implemented a modular admin system deployed in 2 phases, ensuring reliability and user satisfaction.",
-      "Conducted code reviews, advanced debugging, and aligned processes with business objectives."
+      "Development of a Learning Management System (LMS) for the Academy department of CFAO Mobility",
+      "Design, implementation and deployment of a modular architecture based on PHP, JavaScript and MongoDB"
     ],
     descriptionFr: [
-      "Conception, développement et déploiement d'un Système de Gestion d'Apprentissage (LMS) modulaire utilisant PHP, JavaScript et MongoDB.",
-      "Optimisation des requêtes MongoDB résultant en des temps de chargement 80% plus rapides et création d'une architecture UML évolutive.",
-      "Implémentation d'un système d'administration modulaire déployé en 2 phases, assurant fiabilité et satisfaction des utilisateurs.",
-      "Réalisation de revues de code, débogage avancé et alignement des processus avec les objectifs commerciaux."
+      "Développement d'un Système de Gestion d'Apprentissage (LMS) pour le compte du département Academy de CFAO Mobility",
+      "Conception, réalisation et déploiement d'une architecture modulaire basée sur PHP, JavaScript et MongoDB"
     ],
     align: 'left'
   },

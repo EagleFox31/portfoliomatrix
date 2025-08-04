@@ -116,16 +116,24 @@ const ResumeSection = () => {
                 <div className="flex flex-col sm:flex-row">
                   <div className="sm:w-1/3">
                     <p className="text-[hsl(var(--matrix-teal))] font-mono">Oct. 2024 – {language === 'fr' ? 'Présent' : 'Present'}</p>
-                    <p className="font-medium text-white">CFAO Mobility Academy</p>
+                    <p className="font-medium text-white">CFAO Mobility Cameroun</p>
                   </div>
                   <div className="sm:w-2/3">
                     <p className="font-medium text-white">Fullstack Developer</p>
-                    <p className="text-gray-300">
-                      {language === 'fr' ? 
-                        "Conception, développement et déploiement d'un Système de Gestion d'Apprentissage modulaire avec des requêtes MongoDB optimisées et une architecture UML évolutive." : 
-                        "Designed, developed and deployed a modular Learning Management System with optimized MongoDB queries and evolutive UML architecture."
-                      }
-                    </p>
+                    <div className="text-gray-300">
+                      <p className="mb-2">
+                        {language === 'fr' ? 
+                          "• Développement d'un Système de Gestion d'Apprentissage (LMS) pour le compte du département Academy de CFAO Mobility" : 
+                          "• Development of a Learning Management System (LMS) for the Academy department of CFAO Mobility"
+                        }
+                      </p>
+                      <p>
+                        {language === 'fr' ? 
+                          "• Conception, réalisation et déploiement d'une architecture modulaire basée sur PHP, JavaScript et MongoDB" : 
+                          "• Design, implementation and deployment of a modular architecture based on PHP, JavaScript and MongoDB"
+                        }
+                      </p>
+                    </div>
                   </div>
                 </div>
                 
