@@ -28,9 +28,9 @@ const certifications: Certification[] = [
     organization: 'Amazon Web Services',
     date: 'July 2023',
     dateFr: 'Juillet 2023',
-    skills: ['Cloud Architecture', 'High Availability', 'Cost Optimization'],
-    skillsFr: ['Architecture Cloud', 'Haute Disponibilité', 'Optimisation des Coûts'],
-    link: 'https://aws.amazon.com/verification',
+    skills: ['Amazon Web Services', 'AWS', 'AWS Certification', 'AWS Cloud', 'Cloud Architecture', 'Cloud Certification', 'Cloud Data', 'Cloud Infrastructure', 'Cloud Services'],
+    skillsFr: ['Amazon Web Services', 'AWS', 'Certification AWS', 'AWS Cloud', 'Architecture Cloud', 'Certification Cloud', 'Données Cloud', 'Infrastructure Cloud', 'Services Cloud'],
+    link: 'https://www.credly.com/badges/e6af30ab-2ca1-4f71-8c0e-c528913bd948/linked_in_profile',
     certificateFile: '/certificates/aws-solutions-architect.pdf',
     status: 'completed'
   },
@@ -238,7 +238,7 @@ export default function CertificationsSection() {
 
                 {/* Animated Skills */}
                 <div className="flex flex-wrap gap-2">
-                  {(language === 'fr' ? cert.skillsFr : cert.skills).slice(0, 3).map((skill, index) => (
+                  {(language === 'fr' ? cert.skillsFr : cert.skills).slice(0, 6).map((skill, index) => (
                     <Badge 
                       key={index}
                       variant="outline"
