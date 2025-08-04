@@ -28,8 +28,8 @@ const certifications: Certification[] = [
     organization: 'Amazon Web Services',
     date: 'July 2023',
     dateFr: 'Juillet 2023',
-    skills: ['Amazon Web Services', 'AWS', 'AWS Certification', 'AWS Cloud', 'Cloud Architecture', 'Cloud Certification', 'Cloud Data', 'Cloud Infrastructure', 'Cloud Services'],
-    skillsFr: ['Amazon Web Services', 'AWS', 'Certification AWS', 'AWS Cloud', 'Architecture Cloud', 'Certification Cloud', 'Données Cloud', 'Infrastructure Cloud', 'Services Cloud'],
+    skills: ['AWS', 'Infrastructure cloud', 'Amazon Web Services', 'Amazon S3', 'Amazon Elastic Compute Cloud', 'Architecture cloud-native', 'Cloud security', 'Cloud data'],
+    skillsFr: ['AWS', 'Infrastructure cloud', 'Amazon Web Services', 'Amazon S3', 'Amazon Elastic Compute Cloud', 'Architecture cloud-native', 'Sécurité cloud', 'Données cloud'],
     link: 'https://www.credly.com/badges/e6af30ab-2ca1-4f71-8c0e-c528913bd948/linked_in_profile',
     certificateFile: '/certificates/aws-solutions-architect.pdf',
     status: 'completed'
