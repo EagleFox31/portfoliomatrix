@@ -121,16 +121,34 @@ const ResumeSection = () => {
                   <div className="sm:w-2/3">
                     <p className="font-medium text-white">Fullstack Developer</p>
                     <div className="text-gray-300">
-                      <p className="mb-2">
+                      <p className="mb-1">
                         {language === 'fr' ? 
                           "• Développement d'un Système de Gestion d'Apprentissage (LMS) pour le compte du département Academy de CFAO Mobility" : 
                           "• Development of a Learning Management System (LMS) for the Academy department of CFAO Mobility"
                         }
                       </p>
-                      <p>
+                      <p className="mb-1">
                         {language === 'fr' ? 
                           "• Conception, réalisation et déploiement d'une architecture modulaire basée sur PHP, JavaScript et MongoDB" : 
                           "• Design, implementation and deployment of a modular architecture based on PHP, JavaScript and MongoDB"
+                        }
+                      </p>
+                      <p className="mb-1">
+                        {language === 'fr' ? 
+                          "• Optimisation des requêtes MongoDB résultant en des temps de chargement 80% plus rapides et création d'une architecture UML évolutive" : 
+                          "• Optimized MongoDB queries resulting in 80% faster load times and created an evolutive UML architecture"
+                        }
+                      </p>
+                      <p className="mb-1">
+                        {language === 'fr' ? 
+                          "• Implémentation d'un système d'administration modulaire déployé en 2 phases, assurant fiabilité et satisfaction des utilisateurs" : 
+                          "• Implemented a modular admin system deployed in 2 phases, ensuring reliability and user satisfaction"
+                        }
+                      </p>
+                      <p>
+                        {language === 'fr' ? 
+                          "• Réalisation de revues de code, débogage avancé et alignement des processus avec les objectifs commerciaux" : 
+                          "• Conducted code reviews, advanced debugging, and aligned processes with business objectives"
                         }
                       </p>
                     </div>
