@@ -2,7 +2,8 @@ import { useLanguage } from '@/lib/LanguageContext';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ExternalLink, Award, Clock, Download } from 'lucide-react';
+import { ExternalLink, Award, Clock, Download, Eye, Globe } from 'lucide-react';
+import { useState } from 'react';
 
 interface Certification {
   id: string;
@@ -125,6 +126,7 @@ const certifications: Certification[] = [
 
 export default function CertificationsSection() {
   const { language } = useLanguage();
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
 
   const handleDownload = (certificateFile: string, title: string) => {
     const filename = certificateFile.split('/').pop(); // Extract filename from path
@@ -164,24 +166,69 @@ export default function CertificationsSection() {
           {certifications.map((cert) => (
             <Card 
               key={cert.id}
-              className="group border border-[hsl(var(--matrix-green))]/30 bg-black/60 backdrop-blur-sm rounded-lg p-6 shadow-lg shadow-[hsl(var(--matrix-green))]/10 hover:shadow-[hsl(var(--matrix-green))]/20 hover:scale-105 transition-all duration-300 relative overflow-hidden"
+              className="group border border-[hsl(var(--matrix-green))]/30 bg-black/60 backdrop-blur-sm rounded-lg p-6 shadow-lg shadow-[hsl(var(--matrix-green))]/10 hover:shadow-[hsl(var(--matrix-green))]/30 hover:shadow-2xl hover:scale-[1.02] hover:border-[hsl(var(--matrix-green))]/60 transition-all duration-500 ease-out relative overflow-hidden cursor-pointer"
+              onMouseEnter={() => setHoveredCard(cert.id)}
+              onMouseLeave={() => setHoveredCard(null)}
             >
+              {/* Animated glow effect on hover */}
+              <div className={`absolute inset-0 rounded-lg transition-opacity duration-500 ${
+                hoveredCard === cert.id 
+                  ? 'opacity-100 bg-gradient-to-br from-[hsl(var(--matrix-green))]/10 via-transparent to-[hsl(var(--matrix-green))]/5' 
+                  : 'opacity-0'
+              }`}></div>
+              
+              {/* Matrix code rain effect on hover */}
+              <div className={`absolute inset-0 rounded-lg transition-opacity duration-700 overflow-hidden ${
+                hoveredCard === cert.id ? 'opacity-20' : 'opacity-0'
+              }`}>
+                <div className="matrix-rain-card"></div>
+              </div>
+
+              {/* Certification Link Preview Overlay */}
+              {hoveredCard === cert.id && cert.link && (
+                <div className="absolute top-2 left-2 right-2 bg-black/90 backdrop-blur-sm border border-[hsl(var(--matrix-green))]/50 rounded-md p-3 z-20 transform animate-in slide-in-from-top-2 duration-300">
+                  <div className="flex items-center gap-2 text-xs">
+                    <Globe className="w-3 h-3 text-[hsl(var(--matrix-green))]" />
+                    <span className="text-[hsl(var(--matrix-green))] font-mono">
+                      {language === 'fr' ? 'Lien de vérification:' : 'Verification link:'}
+                    </span>
+                  </div>
+                  <div className="text-xs text-gray-300 font-mono mt-1 truncate">
+                    {cert.link}
+                  </div>
+                  <div className="flex items-center gap-1 mt-2">
+                    <Eye className="w-3 h-3 text-[hsl(var(--matrix-green))]" />
+                    <span className="text-xs text-[hsl(var(--matrix-green))]">
+                      {language === 'fr' ? 'Cliquez pour voir le badge officiel' : 'Click to view official badge'}
+                    </span>
+                  </div>
+                </div>
+              )}
+
               {/* Status indicator */}
-              <div className="absolute top-4 right-4">
+              <div className="absolute top-4 right-4 z-10">
                 {cert.status === 'completed' ? (
-                  <Award className="w-5 h-5 text-[hsl(var(--matrix-green))]" />
+                  <Award className={`w-5 h-5 transition-all duration-300 ${
+                    hoveredCard === cert.id 
+                      ? 'text-[hsl(var(--matrix-green))] scale-110 drop-shadow-lg' 
+                      : 'text-[hsl(var(--matrix-green))]'
+                  }`} />
                 ) : (
                   <Clock className="w-5 h-5 text-gray-400" />
                 )}
               </div>
 
               {/* Content */}
-              <div className="space-y-4">
+              <div className="space-y-4 relative z-10">
                 <div>
-                  <h3 className="text-lg font-mono text-white mb-2 pr-8 leading-tight">
+                  <h3 className={`text-lg font-mono text-white mb-2 pr-8 leading-tight transition-all duration-300 ${
+                    hoveredCard === cert.id ? 'text-[hsl(var(--matrix-green))] scale-[1.02]' : ''
+                  }`}>
                     {language === 'fr' ? cert.titleFr : cert.title}
                   </h3>
-                  <p className="text-[hsl(var(--matrix-green))] text-sm font-medium">
+                  <p className={`text-[hsl(var(--matrix-green))] text-sm font-medium transition-all duration-300 ${
+                    hoveredCard === cert.id ? 'text-[hsl(var(--matrix-green))] brightness-125' : ''
+                  }`}>
                     {cert.organization}
                   </p>
                   <p className="text-gray-400 text-sm">
@@ -189,13 +236,20 @@ export default function CertificationsSection() {
                   </p>
                 </div>
 
-                {/* Skills */}
+                {/* Animated Skills */}
                 <div className="flex flex-wrap gap-2">
                   {(language === 'fr' ? cert.skillsFr : cert.skills).slice(0, 3).map((skill, index) => (
                     <Badge 
                       key={index}
                       variant="outline"
-                      className="text-xs border-[hsl(var(--matrix-green))]/50 text-[hsl(var(--matrix-green))] bg-transparent"
+                      className={`text-xs border-[hsl(var(--matrix-green))]/50 text-[hsl(var(--matrix-green))] bg-transparent transition-all duration-300 ${
+                        hoveredCard === cert.id 
+                          ? 'border-[hsl(var(--matrix-green))] bg-[hsl(var(--matrix-green))]/10 scale-105 shadow-sm' 
+                          : 'hover:border-[hsl(var(--matrix-green))]/70'
+                      }`}
+                      style={{
+                        animationDelay: hoveredCard === cert.id ? `${index * 100}ms` : '0ms'
+                      }}
                     >
                       {skill}
                     </Badge>
@@ -211,10 +265,14 @@ export default function CertificationsSection() {
                           e.stopPropagation();
                           window.open(cert.link, '_blank', 'noopener,noreferrer');
                         }}
-                        className="bg-[hsl(var(--matrix-green))]/10 text-[hsl(var(--matrix-green))] border border-[hsl(var(--matrix-green))]/30 hover:bg-[hsl(var(--matrix-green))]/20 h-8 text-xs font-mono"
+                        className={`bg-[hsl(var(--matrix-green))]/10 text-[hsl(var(--matrix-green))] border border-[hsl(var(--matrix-green))]/30 hover:bg-[hsl(var(--matrix-green))]/20 hover:scale-105 h-8 text-xs font-mono transition-all duration-300 ${
+                          hoveredCard === cert.id ? 'animate-pulse shadow-lg shadow-[hsl(var(--matrix-green))]/20 border-[hsl(var(--matrix-green))]/60' : ''
+                        }`}
                         variant="outline"
                       >
-                        <ExternalLink className="w-3 h-3 mr-2" />
+                        <ExternalLink className={`w-3 h-3 mr-2 transition-all duration-300 ${
+                          hoveredCard === cert.id ? 'scale-110' : ''
+                        }`} />
                         {language === 'fr' ? 'Voir le badge' : 'View badge'}
                       </Button>
                     )}
@@ -224,10 +282,14 @@ export default function CertificationsSection() {
                           e.stopPropagation();
                           handleDownload(cert.certificateFile!, language === 'fr' ? cert.titleFr : cert.title);
                         }}
-                        className="bg-[hsl(var(--matrix-teal))]/10 text-[hsl(var(--matrix-teal))] border border-[hsl(var(--matrix-teal))]/30 hover:bg-[hsl(var(--matrix-teal))]/20 h-8 text-xs font-mono"
+                        className={`bg-[hsl(var(--matrix-teal))]/10 text-[hsl(var(--matrix-teal))] border border-[hsl(var(--matrix-teal))]/30 hover:bg-[hsl(var(--matrix-teal))]/20 hover:scale-105 h-8 text-xs font-mono transition-all duration-300 ${
+                          hoveredCard === cert.id ? 'border-[hsl(var(--matrix-teal))]/60 shadow-md shadow-[hsl(var(--matrix-teal))]/20' : ''
+                        }`}
                         variant="outline"
                       >
-                        <Download className="w-3 h-3 mr-2" />
+                        <Download className={`w-3 h-3 mr-2 transition-all duration-300 ${
+                          hoveredCard === cert.id ? 'scale-110 animate-bounce' : ''
+                        }`} />
                         {language === 'fr' ? 'Télécharger' : 'Download'}
                       </Button>
                     )}

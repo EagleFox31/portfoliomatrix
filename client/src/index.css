@@ -176,6 +176,66 @@
   }
 }
 
-.animate-digital-rain {
-  animation: digital-rain 15s linear infinite;
+/* Matrix rain effect for certification cards */
+.matrix-rain-card {
+  @apply absolute inset-0 overflow-hidden;
+  background: linear-gradient(
+    transparent 0%,
+    rgba(0, 255, 65, 0.03) 2%,
+    rgba(0, 255, 65, 0.08) 3%,
+    rgba(0, 255, 65, 0.03) 3%,
+    transparent 3%,
+    rgba(0, 255, 65, 0.02) 98%,
+    transparent
+  );
+  background-size: 100% 50px;
+  animation: matrix-card-rain 2s linear infinite;
 }
+
+.matrix-rain-card::before {
+  content: '';
+  @apply absolute inset-0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 98px,
+    rgba(0, 255, 65, 0.05) 100px
+  );
+  animation: matrix-card-sweep 3s linear infinite;
+}
+
+@keyframes matrix-card-rain {
+  0% {
+    background-position: 0% 0px;
+  }
+  100% {
+    background-position: 0% 50px;
+  }
+}
+
+@keyframes matrix-card-sweep {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Enhanced pulse animation for badges */
+@keyframes enhanced-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.02);
+  }
+}
+
+.animate-enhanced-pulse {
+  animation: enhanced-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+
