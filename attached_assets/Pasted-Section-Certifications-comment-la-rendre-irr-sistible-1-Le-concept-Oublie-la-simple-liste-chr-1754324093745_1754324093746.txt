@@ -1,0 +1,60 @@
+Section « Certifications » – comment la rendre irrésistible
+1. Le concept
+Oublie la simple liste chronologique. Pense “wall of badges” : un espace visuel qui claque dès qu’on arrive sur la page, où chaque badge agit comme un mini-CTA. L’idée est d’afficher rapidement : titre + logo + preuve et de laisser l’utilisateur cliquer pour les détails.
+
+2. Le flux utilisateur
+
+Vue grille : 3 à 4 badges par ligne, responsive.
+
+Hover : zoom léger + ombre portée, révèle un court résumé des skills (« Cloud », « Data viz », etc.).
+
+Clic : ouvre un modal (ou nouvelle tab) vers le lien officiel de vérification. Sous le bouton, propose le Download PDF si disponible.
+
+3. Les badges à mettre et leurs liens
+
+AWS Certified Solutions Architect – Associate → Lien Credly officiel (bouton “Voir le badge”) + PDF de la certif dans le modal.
+
+Kaggle Data Visualization Certificate of Completion → Lien “kaggle.com/learn/certificates/[ID]” + capture d’écran du badge.
+
+Kaggle Python Certificate of Completion → Même logique que le précédent.
+
+HackerRank SQL Advanced → URL de vérif “hackerrank.com/certificates/2E3AC7OAF727” (ton ID) + miniature du PDF.
+
+Google Foundations of Cybersecurity → Lien Coursera shareable (commence par “coursera.org/account/accomplishments/professional-cert/[ID]”).
+
+Security Operations Center (SOC) – IBM/Coursera → Lien Coursera shareable (même pattern) et PDF joint.
+
+SQL Advanced – HackerRank → déjà cité ; regroupe-le ou sépare-le si tu veux distinguer data vs SGBD.
+
+Become a Player in the Energy Transition – ITC SME Trade Academy → Lien de vérif ITC + PDF.
+
+À venir – IBM IT Project Manager Professional Certificate → Badge “In progress” gris, non cliquable pour le moment (effet teasing).
+
+4. Hiérarchie visuelle
+
+Garde AWS et Google en premier ; ce sont les plus “reconnus marché”.
+
+Regroupe ensuite Data (Kaggle), SQL (HackerRank), puis Cyber (SOC), puis Énergie (diversification).
+
+Termine par le badge “En cours” IBM.
+
+5. Micro-copy
+
+Bouton principal : “Voir le badge”.
+
+Bouton secondaire dans le modal : “Télécharger la preuve PDF”.
+
+Tagline sous la grille : “Compétences validées par l’industrie, mises à jour en continu 💡”.
+
+6. Détails techniques
+
+Lazy-load les images (attribute loading="lazy").
+
+Ajoute rel="noopener noreferrer" sur tous les liens externes.
+
+Pour le modal, pense à fermer par Esc et clic hors zone (accessibilité).
+
+Optimise chaque PNG/SVG à < 80 kB (TinyPNG ou Squoosh).
+
+7. Fréquence de mise à jour
+Planifie un rapide check trimestriel : nouvelles certifs, badges expirés, progression IBM… et poste-le direct sur LinkedIn pour le personal branding (one stone , two birds).

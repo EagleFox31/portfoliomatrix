@@ -1,0 +1,63 @@
+AWS Certified Solutions Architect — Associate
+Amazon Web Services · juil. 2023
+Compétences : architecture cloud, haute disponibilité, optimisation des coûts.
+Status : déjà visible sur ton portfolio — garde-le en tête de liste pour l’impact.
+
+Kaggle Python Certificate of Completion
+Kaggle · juin 2023
+https://www.kaggle.com/learn/certification/jenniferlawrynn/python
+Compétences : scripts Python, pandas, numpy, data prep.
+
+Kaggle Data Visualization Certificate of Completion
+Kaggle · juin 2023
+https://www.kaggle.com/learn/certification/jenniferlawrynn/data-visualization
+Compétences : matplotlib, seaborn, storytelling graphique.
+
+SQL Advanced
+HackerRank · juil. 2023
+https://www.hackerrank.com/certificates/2e3ac70af727
+Compétences : requêtes complexes, jointures, window functions, optimisation.
+
+Security Operations Center (SOC)
+Coursera · août 2024
+https://www.coursera.org/account/accomplishments/verify/MCLMOZ1TA3K2
+Compétences : opérations SOC, SIEM, détection & réponse, WMS.
+
+Foundations of Cybersecurity
+Google · mai 2025
+https://www.coursera.org/account/accomplishments/verify/YI76AYVEU18O
+Compétences : gestion des risques, contrôles de sécurité, data ethics.
+
+Become a Player in the Energy Transition
+ITC SME Trade Academy · juin 2023
+https://learning.intracen.org/verify/?q=1OJFME6JH2
+Compétences : enjeux climat, finance verte, marchés RE.
+
+IBM IT Project Manager Professional Certificate (en cours)
+IBM / Coursera · 2025
+Badge « In progress » gris : tease la montée en compétences PM.
+
+🛠️ Guide d’intégration express
+Disposition
+
+Grid responsive : 3 badges/ligne desktop, 2 tablette, 1 mobile.
+
+Chaque badge = logo rond + titre + date (typo fine) + tag skills.
+
+Effets UX
+
+Hover : léger zoom + ombre douce.
+
+Click : ouvre la page de vérification dans un nouvel onglet (target="_blank" rel="noopener").
+
+Accessibilité & perfs
+
+Images optimisées < 80 kB (loading="lazy").
+
+Texte alt = “Badge <Titre Certif>”.
+
+Dark-mode ready (filtre CSS invert à 90 % sur logos foncés si nécessaire).
+
+Mise à jour
+
+Check trimestriel : nouveaux badges, statut « in progress » → « earned ».

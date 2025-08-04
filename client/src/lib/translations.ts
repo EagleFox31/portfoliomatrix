@@ -5,6 +5,7 @@ export type TranslationKey =
   | 'experience'
   | 'skills'
   | 'projects'
+  | 'certifications'
   | 'resume'
   | 'contact'
   | 'hero.greeting'
@@ -70,6 +71,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'experience': 'Experience',
     'skills': 'Skills',
     'projects': 'Projects',
+    'certifications': 'Certifications',
     'resume': 'Resume',
     'contact': 'Contact',
     'hero.greeting': 'Hello, I am',
@@ -134,6 +136,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'experience': 'Expérience',
     'skills': 'Compétences',
     'projects': 'Projets',
+    'certifications': 'Certifications',
     'resume': 'CV',
     'contact': 'Contact',
     'hero.greeting': 'Bonjour, je suis',
