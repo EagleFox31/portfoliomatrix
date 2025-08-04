@@ -1,7 +1,8 @@
 import { useLanguage } from '@/lib/LanguageContext';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ExternalLink, Award, Clock } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { ExternalLink, Award, Clock, Download } from 'lucide-react';
 
 interface Certification {
   id: string;
@@ -13,6 +14,7 @@ interface Certification {
   skills: string[];
   skillsFr: string[];
   link?: string;
+  certificateFile?: string;
   status: 'completed' | 'in-progress';
   logoUrl?: string;
 }
@@ -27,7 +29,8 @@ const certifications: Certification[] = [
     dateFr: 'Juillet 2023',
     skills: ['Cloud Architecture', 'High Availability', 'Cost Optimization'],
     skillsFr: ['Architecture Cloud', 'Haute Disponibilité', 'Optimisation des Coûts'],
-    link: 'https://aws.amazon.com/certification/certified-solutions-architect-associate/',
+    link: 'https://aws.amazon.com/verification',
+    certificateFile: '/certificates/aws-solutions-architect.pdf',
     status: 'completed'
   },
   {
@@ -40,18 +43,20 @@ const certifications: Certification[] = [
     skills: ['Risk Management', 'Security Controls', 'Data Ethics'],
     skillsFr: ['Gestion des Risques', 'Contrôles de Sécurité', 'Éthique des Données'],
     link: 'https://www.coursera.org/account/accomplishments/verify/YI76AYVEU18O',
+    certificateFile: '/certificates/google-cybersecurity.pdf',
     status: 'completed'
   },
   {
     id: 'soc-operations',
     title: 'Security Operations Center (SOC)',
     titleFr: 'Centre d\'Opérations de Sécurité (SOC)',
-    organization: 'Coursera',
+    organization: 'Cisco Learning',
     date: 'August 2024',
     dateFr: 'Août 2024',
     skills: ['SOC Operations', 'SIEM', 'Detection & Response'],
     skillsFr: ['Opérations SOC', 'SIEM', 'Détection et Réponse'],
     link: 'https://www.coursera.org/account/accomplishments/verify/MCLMOZ1TA3K2',
+    certificateFile: '/certificates/soc-operations.pdf',
     status: 'completed'
   },
   {
@@ -59,11 +64,12 @@ const certifications: Certification[] = [
     title: 'Python Certificate of Completion',
     titleFr: 'Certificat Python',
     organization: 'Kaggle',
-    date: 'June 2023',
-    dateFr: 'Juin 2023',
+    date: 'June 8, 2023',
+    dateFr: '8 Juin 2023',
     skills: ['Python Scripts', 'Pandas', 'NumPy', 'Data Preparation'],
     skillsFr: ['Scripts Python', 'Pandas', 'NumPy', 'Préparation de Données'],
     link: 'https://www.kaggle.com/learn/certification/jenniferlawrynn/python',
+    certificateFile: '/certificates/kaggle-python.png',
     status: 'completed'
   },
   {
@@ -71,11 +77,12 @@ const certifications: Certification[] = [
     title: 'Data Visualization Certificate',
     titleFr: 'Certificat de Visualisation de Données',
     organization: 'Kaggle',
-    date: 'June 2023',
-    dateFr: 'Juin 2023',
+    date: 'June 12, 2023',
+    dateFr: '12 Juin 2023',
     skills: ['Matplotlib', 'Seaborn', 'Data Storytelling'],
     skillsFr: ['Matplotlib', 'Seaborn', 'Storytelling Graphique'],
     link: 'https://www.kaggle.com/learn/certification/jenniferlawrynn/data-visualization',
+    certificateFile: '/certificates/kaggle-dataviz.png',
     status: 'completed'
   },
   {
@@ -95,11 +102,12 @@ const certifications: Certification[] = [
     title: 'Become a Player in the Energy Transition',
     titleFr: 'Devenir un Acteur de la Transition Énergétique',
     organization: 'ITC SME Trade Academy',
-    date: 'June 2023',
-    dateFr: 'Juin 2023',
+    date: 'June 25, 2023',
+    dateFr: '25 Juin 2023',
     skills: ['Climate Issues', 'Green Finance', 'Renewable Energy Markets'],
     skillsFr: ['Enjeux Climatiques', 'Finance Verte', 'Marchés Énergies Renouvelables'],
     link: 'https://learning.intracen.org/verify/?q=1OJFME6JH2',
+    certificateFile: '/certificates/energy-transition.png',
     status: 'completed'
   },
   {
@@ -117,6 +125,19 @@ const certifications: Certification[] = [
 
 export default function CertificationsSection() {
   const { language } = useLanguage();
+
+  const handleDownload = (certificateFile: string, title: string) => {
+    const filename = certificateFile.split('/').pop(); // Extract filename from path
+    const downloadUrl = `/api/certificates/download/${filename}`;
+    
+    const link = document.createElement('a');
+    link.href = downloadUrl;
+    link.download = `Jennifer_Lawrynn_${filename}`;
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <section id="certifications" className="py-20 px-6 bg-black relative overflow-hidden">
@@ -143,8 +164,7 @@ export default function CertificationsSection() {
           {certifications.map((cert) => (
             <Card 
               key={cert.id}
-              className="group border border-[hsl(var(--matrix-green))]/30 bg-black/60 backdrop-blur-sm rounded-lg p-6 shadow-lg shadow-[hsl(var(--matrix-green))]/10 hover:shadow-[hsl(var(--matrix-green))]/20 hover:scale-105 transition-all duration-300 cursor-pointer relative overflow-hidden"
-              onClick={() => cert.link && window.open(cert.link, '_blank', 'noopener,noreferrer')}
+              className="group border border-[hsl(var(--matrix-green))]/30 bg-black/60 backdrop-blur-sm rounded-lg p-6 shadow-lg shadow-[hsl(var(--matrix-green))]/10 hover:shadow-[hsl(var(--matrix-green))]/20 hover:scale-105 transition-all duration-300 relative overflow-hidden"
             >
               {/* Status indicator */}
               <div className="absolute top-4 right-4">
@@ -182,16 +202,40 @@ export default function CertificationsSection() {
                   ))}
                 </div>
 
-                {/* Link indicator */}
-                {cert.link && cert.status === 'completed' && (
-                  <div className="flex items-center text-gray-400 text-sm group-hover:text-[hsl(var(--matrix-green))] transition-colors">
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    {language === 'fr' ? 'Voir le badge' : 'View badge'}
+                {/* Action Buttons */}
+                {cert.status === 'completed' && (
+                  <div className="flex flex-col gap-2 mt-4">
+                    {cert.link && (
+                      <Button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          window.open(cert.link, '_blank', 'noopener,noreferrer');
+                        }}
+                        className="bg-[hsl(var(--matrix-green))]/10 text-[hsl(var(--matrix-green))] border border-[hsl(var(--matrix-green))]/30 hover:bg-[hsl(var(--matrix-green))]/20 h-8 text-xs font-mono"
+                        variant="outline"
+                      >
+                        <ExternalLink className="w-3 h-3 mr-2" />
+                        {language === 'fr' ? 'Voir le badge' : 'View badge'}
+                      </Button>
+                    )}
+                    {cert.certificateFile && (
+                      <Button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleDownload(cert.certificateFile!, language === 'fr' ? cert.titleFr : cert.title);
+                        }}
+                        className="bg-[hsl(var(--matrix-teal))]/10 text-[hsl(var(--matrix-teal))] border border-[hsl(var(--matrix-teal))]/30 hover:bg-[hsl(var(--matrix-teal))]/20 h-8 text-xs font-mono"
+                        variant="outline"
+                      >
+                        <Download className="w-3 h-3 mr-2" />
+                        {language === 'fr' ? 'Télécharger' : 'Download'}
+                      </Button>
+                    )}
                   </div>
                 )}
 
                 {cert.status === 'in-progress' && (
-                  <div className="flex items-center text-gray-500 text-sm">
+                  <div className="flex items-center text-gray-500 text-sm mt-4">
                     <Clock className="w-4 h-4 mr-2" />
                     {language === 'fr' ? 'En cours' : 'In progress'}
                   </div>

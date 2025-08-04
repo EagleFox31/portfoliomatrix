@@ -108,6 +108,64 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Download certificate endpoint
+  app.get("/api/certificates/download/:filename", (req, res) => {
+    try {
+      const filename = req.params.filename;
+      
+      // Security: Only allow specific certificate files
+      const allowedFiles = [
+        'aws-solutions-architect.pdf',
+        'google-cybersecurity.pdf', 
+        'soc-operations.pdf',
+        'kaggle-python.png',
+        'kaggle-dataviz.png',
+        'energy-transition.png'
+      ];
+      
+      if (!allowedFiles.includes(filename)) {
+        return res.status(404).json({ error: 'Certificate not found' });
+      }
+      
+      const filePath = path.join(process.cwd(), 'public', 'certificates', filename);
+      
+      console.log('Attempting to send certificate:', filePath);
+      console.log('File exists:', fs.existsSync(filePath));
+      
+      if (fs.existsSync(filePath)) {
+        const downloadName = `Jennifer_Lawrynn_${filename}`;
+        const mimeType = filename.endsWith('.pdf') ? 'application/pdf' : 'image/png';
+        
+        res.setHeader('Content-Type', mimeType);
+        res.setHeader('Content-Disposition', `attachment; filename=${downloadName}`);
+        
+        const fileStream = fs.createReadStream(filePath);
+        
+        fileStream.on('error', (error) => {
+          console.error('Stream error:', error);
+          res.status(500).json({ 
+            success: false, 
+            message: "Error streaming certificate file" 
+          });
+        });
+        
+        fileStream.pipe(res);
+      } else {
+        console.error('Certificate file not found at path:', filePath);
+        res.status(404).json({ 
+          success: false, 
+          message: "Certificate file not found" 
+        });
+      }
+    } catch (error) {
+      console.error("Error in certificate download:", error);
+      res.status(500).json({ 
+        success: false, 
+        message: "Server error while processing certificate download" 
+      });
+    }
+  });
+
   const httpServer = createServer(app);
 
   return httpServer;

@@ -140,6 +140,16 @@ The application is configured for deployment on Replit with:
 5. Database schema changes should be applied with `npm run db:push`
 6. Production build with `npm run build`
 
+## Recent Updates
+
+### January 2025 - Certifications Section Added
+- Integrated comprehensive Certifications section with 8 authentic certifications
+- Added real certificate files (PDFs and images) with secure download functionality
+- Implemented `/api/certificates/download/:filename` endpoint with security whitelist
+- Enhanced navigation to include Certifications section
+- Full bilingual support (French/English) for all certification content
+- Matrix-themed UI with interactive certification cards featuring verification links and download buttons
+
 ## Future Improvements
 
 1. Add user authentication for admin access
@@ -147,3 +157,4 @@ The application is configured for deployment on Replit with:
 3. Add blog functionality
 4. Improve SEO with meta tags and server-side rendering
 5. Add analytics to track visitor information
+6. Add certificate verification modal with detailed information
