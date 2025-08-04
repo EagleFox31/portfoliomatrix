@@ -179,7 +179,7 @@ export default function CertificationsSection() {
               
               {/* Matrix code rain effect on hover */}
               <div className={`absolute inset-0 rounded-lg transition-opacity duration-700 overflow-hidden ${
-                hoveredCard === cert.id ? 'opacity-30' : 'opacity-0'
+                hoveredCard === cert.id ? 'opacity-70' : 'opacity-0'
               }`}>
                 <div className="matrix-rain-card"></div>
               </div>

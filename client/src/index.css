@@ -181,15 +181,15 @@
   @apply absolute inset-0 overflow-hidden;
   background: linear-gradient(
     transparent 0%,
-    rgba(0, 255, 65, 0.03) 2%,
-    rgba(0, 255, 65, 0.08) 3%,
-    rgba(0, 255, 65, 0.03) 3%,
+    rgba(0, 255, 65, 0.1) 2%,
+    rgba(0, 255, 65, 0.2) 3%,
+    rgba(0, 255, 65, 0.1) 3%,
     transparent 3%,
-    rgba(0, 255, 65, 0.02) 98%,
+    rgba(0, 255, 65, 0.05) 98%,
     transparent
   );
   background-size: 100% 50px;
-  animation: matrix-card-rain 2s linear infinite;
+  animation: matrix-card-rain 1.5s linear infinite;
 }
 
 .matrix-rain-card::before {
@@ -198,15 +198,27 @@
   background: repeating-linear-gradient(
     90deg,
     transparent,
-    transparent 98px,
-    rgba(0, 255, 65, 0.05) 100px
+    transparent 48px,
+    rgba(0, 255, 65, 0.15) 50px,
+    transparent 52px
   );
-  animation: matrix-card-sweep 3s linear infinite;
+  animation: matrix-card-sweep 2s linear infinite;
+}
+
+.matrix-rain-card::after {
+  content: 'ℳ Ⱥ Ⱦ ℜ Ɨ Ӿ';
+  @apply absolute inset-0 flex items-center justify-center;
+  font-family: 'Courier New', monospace;
+  font-size: 2rem;
+  color: rgba(0, 255, 65, 0.3);
+  letter-spacing: 0.2em;
+  animation: matrix-text-flicker 3s ease-in-out infinite;
+  pointer-events: none;
 }
 
 @keyframes matrix-card-rain {
   0% {
-    background-position: 0% 0px;
+    background-position: 0% -50px;
   }
   100% {
     background-position: 0% 50px;
@@ -216,9 +228,30 @@
 @keyframes matrix-card-sweep {
   0%, 100% {
     opacity: 0;
+    transform: translateX(-100%);
   }
   50% {
     opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+@keyframes matrix-text-flicker {
+  0%, 100% {
+    opacity: 0.1;
+    transform: scale(1);
+  }
+  25% {
+    opacity: 0.3;
+    transform: scale(1.05);
+  }
+  50% {
+    opacity: 0.2;
+    transform: scale(0.95);
+  }
+  75% {
+    opacity: 0.25;
+    transform: scale(1.02);
   }
 }
 
